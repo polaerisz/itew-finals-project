@@ -1,0 +1,238 @@
+:root {
+  --ibuy-blue: #0058a3;
+  --ibuy-blue-dark: #004f93;
+  --ibuy-yellow: #fbd914;
+  --ibuy-ink: #111;
+  --ibuy-muted: #6f6f6f;
+  --ibuy-line: #dfdfdf;
+  --ibuy-tint: #f5f5f5;
+  --bs-primary: var(--ibuy-blue);
+  --bs-body-font-family: "Noto Sans", "Segoe UI", system-ui, sans-serif;
+}
+body {
+  color: var(--ibuy-ink);
+}
+a {
+  color: var(--ibuy-blue);
+}
+
+/* Header */
+.topbar {
+  background: var(--ibuy-blue);
+}
+.topbar .nav-link,
+.topbar .navbar-brand {
+  color: #fff;
+  font-size: 0.85rem;
+}
+.topbar .nav-link:hover {
+  text-decoration: underline;
+}
+.brand-mark {
+  background: var(--ibuy-yellow);
+  color: var(--ibuy-blue);
+  font-weight: 800;
+  padding: 0.1rem 0.7rem;
+  border-radius: 50%/60%;
+  letter-spacing: 0.05em;
+}
+.search-box {
+  max-width: 520px;
+}
+.search-box .form-control {
+  border-radius: 999px;
+  background: var(--ibuy-tint);
+  border-color: transparent;
+}
+
+
+.ph {
+  background-image: url(img/banner_img.png);
+  background-size: cover;
+  border-radius: 0.5rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8a8a8a;
+  font-size: 0.8rem;
+}
+.ph-main {
+  aspect-ratio: 1/1;
+}
+.ph-thumb {
+  aspect-ratio: 1/1;
+}
+
+/* Product details */
+.thumb-btn {
+  padding: 0;
+  border: 2px solid transparent;
+  background: none;
+  border-radius: 0.5rem;
+  width: 100%;
+}
+.thumb-btn.active,
+.thumb-btn:hover {
+  border-color: var(--ibuy-blue);
+}
+.price {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--ibuy-blue);
+}
+.rating {
+  color: #e0a800;
+  letter-spacing: 0.1em;
+}
+.swatch {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px var(--ibuy-line);
+  cursor: pointer;
+  display: inline-block;
+}
+.btn-check:checked + .swatch {
+  box-shadow: 0 0 0 2px var(--ibuy-blue);
+}
+.btn-check:focus-visible + .swatch,
+.btn-check:focus-visible + .size-chip {
+  outline: 3px solid var(--ibuy-yellow);
+  outline-offset: 2px;
+}
+.size-chip {
+  min-width: 2.75rem;
+  text-align: center;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--ibuy-line);
+  border-radius: 0.4rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+.btn-check:checked + .size-chip {
+  background: var(--ibuy-ink);
+  color: #fff;
+  border-color: var(--ibuy-ink);
+}
+.qty {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--ibuy-line);
+  border-radius: 999px;
+}
+.qty input {
+  width: 3rem;
+  border: 0;
+  text-align: center;
+  font-weight: 600;
+  -moz-appearance: textfield;
+}
+.qty input::-webkit-outer-spin-button,
+.qty input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+.btn-ibuy {
+  background: var(--ibuy-yellow);
+  color: var(--ibuy-ink);
+  font-weight: 700;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.75rem 2rem;
+}
+.btn-ibuy:hover,
+.btn-ibuy:focus-visible {
+  background: #e8c800;
+  color: var(--ibuy-ink);
+}
+.btn-ibuy-blue {
+  background: var(--ibuy-blue);
+  color: #fff;
+  font-weight: 700;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.75rem 2rem;
+}
+.btn-ibuy-blue:hover {
+  background: var(--ibuy-blue-dark);
+  color: #fff;
+}
+
+/* Auth */
+.auth-wrap {
+  min-height: calc(100vh - 120px);
+}
+.auth-card {
+  max-width: 480px;
+  width: 100%;
+  border: 1px solid var(--ibuy-line);
+  border-radius: 1rem;
+  padding: 2rem;
+  background: #fff;
+}
+.auth-side {
+  background: var(--ibuy-tint);
+}
+.form-control,
+.form-select {
+  padding: 0.7rem 0.9rem;
+  border-radius: 0.5rem;
+}
+.form-control:focus {
+  border-color: var(--ibuy-blue);
+  box-shadow: 0 0 0 0.2rem rgba(0, 88, 163, 0.2);
+}
+
+.form-control:user-invalid {
+  border-color: #c4262e;
+  background-color: #fff6f6;
+}
+.form-control:user-valid {
+  border-color: #1a7f37;
+}
+.form-control:user-invalid ~ .invalid-feedback,
+.form-check-input:user-invalid ~ .invalid-feedback {
+  display: block;
+}
+.form-check-input:user-invalid {
+  border-color: #c4262e;
+}
+
+footer {
+  background: var(--ibuy-tint);
+  font-size: 0.85rem;
+}
+
+/* ---------- Media queries ---------- */
+@media (max-width: 990px) {
+  /* Tablet */
+  .price {
+    font-size: 1.5rem;
+  }
+  .auth-side {
+    display: none;
+  }
+}
+@media (max-width: 765px) {
+  /* Phone */
+  .auth-card {
+    border: 0;
+    padding: 1rem;
+  }
+  .auth-wrap {
+    align-items: flex-start !important;
+  }
+  .buy-row .btn-ibuy {
+    width: 100%;
+  }
+  .buy-row {
+    flex-direction: column;
+    align-items: stretch !important;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
