@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>iBUY Philippines</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+<style>
+:root {
+  --blue: #0b57a6;
+  --yellow: #ffdb1f;
+  --gray: #f3f3f3;
+  --line: #d9d9d9;
+  --black: #111;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", Arial, sans-serif;
+  color: var(--black);
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+.skip {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  z-index: 999;
+  padding: 8px 14px;
+  background: var(--yellow);
+  font-weight: 600;
+}
+
+.skip:focus {
+  left: 0;
+}
+
+.ph {
+  position: relative;
+  background: #e5e5e5;
+}
+
+.ph img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Top bar + header */
+.topbar {
+  padding: 8px 4%;
+  display: flex;
+  justify-content: space-between;
+  background: var(--blue);
+  color: #fff;
+  font-size: 12px;
+}
+
+.topbar span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding: 14px 4%;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: #fff;
+  box-shadow: 0 1px 0 var(--line);
+}
+
+.logo {
+  padding: 9px 13px;
+  background: var(--blue);
+  color: var(--yellow);
+  border: 2px solid var(--yellow);
+  font-size: 21px;
+  font-weight: 800;
+  transition: background .2s;
+}
+
+.logo:hover {
+  background: #094a8c;
+}
+
+nav {
+  display: flex;
+  gap: 20px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+nav a {
+  padding: 4px 0;
+  border-bottom: 2px solid transparent;
+  transition: border-color .2s, color .2s;
+}
+
+nav a:hover {
+  color: var(--blue);
+  border-color: var(--yellow);
+}
+
+.search {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 14px;
+  background: #f1f1f1;
+  border-radius: 20px;
+  border: 1px solid transparent;
+  transition: border-color .2s, background .2s;
+}
+
+.search:focus-within {
+  background: #fff;
+  border-color: var(--blue);
+}
+
+.search input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font: inherit;
+  font-size: 13px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 12px;
+}
+
+.actions a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: color .2s;
+}
+
+.actions a:hover {
+  color: var(--blue);
+}
+
+.actions i {
+  font-size: 17px;
+}
+
+.menu-toggle,
+.menu-btn {
+  display: none;
+}
+
+.wrap {
+  width: 92%;
+  max-width: 1350px;
+  margin: auto;
+}
+
+/* Hero */
+.hero {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  margin-top: 16px;
+}
+
+.slides {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.slides::-webkit-scrollbar,
+.cats::-webkit-scrollbar {
+  display: none;
+}
+
+.slide {
+  position: relative;
+  flex: 0 0 100%;
+  min-height: 260px;
+  padding: 40px 5%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  scroll-snap-align: start;
+}
+
+.slide .ph {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.slide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to left, rgba(62, 6, 247, 0.55), rgba(206, 252, 57, 0.737) 70%);
+}
+
+.slide h1 {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: #fff;
+  text-align: right;
+  font-family: "Syne", Arial, sans-serif;
+  font-size: clamp(27px, 3.6vw, 44px);
+  line-height: 1.1;
+  text-shadow: 0 2px 6px rgba(0,0,0,.4);
+}
+
+.dots {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  z-index: 2;
+}
+
+.dots button {
+  width: 20px;
+  height: 20px;
+  padding: 6px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.dots button::before {
+  content: "";
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.6);
+}
+
+.dots button[aria-current="true"]::before {
+  background: #fff;
+}
+
+/* Categories */
+.cats-wrap {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.arrow {
+  flex: none;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #ccc;
+  cursor: pointer;
+}
+
+.arrow:hover:not(:disabled) {
+  background: #aaa;
+}
+
+.arrow:disabled {
+  opacity: .35;
+  cursor: default;
+}
+
+.cats {
+  --gap: 15px;
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  gap: var(--gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+
+.cats li {
+  flex: 0 0 calc((100% - 6 * var(--gap)) / 7);
+}
+
+.cat {
+  height: 100%;
+  padding: 12px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: var(--gray);
+  border-radius: 8px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 500;
+  transition: background .2s;
+}
+
+.cat:hover {
+  background: #e7e7e7;
+  color: var(--blue);
+}
+
+.cat .ph {
+  width: 90px;
+  max-width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: transparent;
+}
+
+.cat img {
+  transition: transform .25s;
+}
+
+.cat:hover img {
+  transform: scale(1.08);
+}
+
+/* Welcome */
+.welcome {
+  padding: 44px 0 20px;
+}
+
+.welcome h2 {
+  margin: 0;
+  font-size: clamp(28px, 3vw, 36px);
+  font-weight: 600;
+  letter-spacing: -.01em;
+}
+
+.welcome p {
+  margin: 6px 0 0;
+  color: #444;
+}
+
+/* Showcase */
+.showcase {
+  padding: 15px 0 60px;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 35px;
+  align-items: center;
+}
+
+.gallery {
+  height: 450px;
+  display: grid;
+  grid-template-columns: 1.15fr .85fr .65fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 12px;
+}
+
+.tile {
+  position: relative;
+  min-width: 0;
+}
+
+.tile.ph {
+  overflow: visible;
+}
+
+.tile-image {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #e5e5e5;
+}
+
+.tile-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .5s;
+}
+
+.tile:hover .tile-image img {
+  transform: scale(1.04);
+}
+
+.g1 {
+  grid-column: 1;
+  grid-row: 1 / 3;
+}
+
+.g2 {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.g3 {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.g4 {
+  grid-column: 3;
+  grid-row: 1 / 3;
+}
+
+/* Product tags */
+.tag {
+  position: absolute;
+  z-index: 5;
+  width: max-content;
+  max-width: 90%;
+  background: #fff;
+  font-size: 11px;
+  line-height: 1.35;
+  box-shadow: 0 2px 6px rgba(0,0,0,.25);
+}
+
+.tag.open {
+  z-index: 100;
+}
+
+.tag-head {
+  display: flex;
+  align-items: stretch;
+}
+
+.tag-name {
+  min-width: 80px;
+  padding: 6px 9px;
+}
+
+.tag b {
+  display: block;
+  font-size: 12px;
+}
+
+.tag-price {
+  font-weight: 700;
+  color: var(--blue);
+}
+
+.tag-toggle {
+  flex: 0 0 28px;
+  width: 28px;
+  min-height: 28px;
+  padding: 0;
+  border: 0;
+  border-left: 1px solid var(--line);
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background .2s;
+}
+
+.tag-toggle:hover {
+  background: var(--yellow);
+}
+
+.tag-toggle i {
+  transition: transform .2s;
+}
+
+.tag.open .tag-toggle i {
+  transform: rotate(180deg);
+}
+
+.tag-info {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  width: 230px;
+  max-width: 70vw;
+  padding: 10px;
+  background: #fff;
+  border: 1px solid var(--line);
+  box-shadow: 0 3px 10px rgba(0,0,0,.2);
+  display: none;
+  font-size: 12px;
+  z-index: 200;
+}
+
+.tag.open .tag-info {
+  display: block;
+  animation: pop .15s ease-out;
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
+
+.tag-info p {
+  margin: 0 0 6px;
+}
+
+.tag-info dl {
+  margin: 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2px 8px;
+}
+
+.tag-info dt {
+  font-weight: 700;
+}
+
+.tag-info dd {
+  margin: 0;
+}
+
+.t1 {
+  left: 12%;
+  top: 42%;
+}
+
+.t2 {
+  left: 6%;
+  bottom: 8%;
+}
+
+.t3,
+.t4 {
+  right: 6%;
+  bottom: 8%;
+}
+
+.t5 {
+  right: 6%;
+  top: 8%;
+}
+
+/* Copy */
+.copy h3 {
+  margin: 0 0 18px;
+  font-size: clamp(28px, 2.6vw, 34px);
+  line-height: 1.2;
+  letter-spacing: -.01em;
+}
+
+.copy p {
+  margin: 0 0 30px;
+  max-width: 52ch;
+  color: #333;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.btn {
+  display: inline-block;
+  padding: 11px 28px;
+  border: 1px solid var(--black);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background .2s, color .2s;
+}
+
+.btn:hover {
+  background: var(--black);
+  color: #fff;
+}
+
+/* Footer */
+footer {
+  padding: 24px 4%;
+  background: var(--gray);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #555;
+}
+
+footer nav {
+  font-size: 12px;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .cats li {
+    flex-basis: calc((100% - 3 * var(--gap)) / 4);
+  }
+
+  .showcase {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery {
+    height: 500px;
+  }
+}
+
+@media (max-width: 860px) {
+  header {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+  }
+
+  .menu-btn i {
+    font-size: 24px;
+  }
+
+  .logo {
+    margin-right: auto;
+  }
+
+  .actions {
+    gap: 10px;
+  }
+
+  .actions .label {
+    display: none;
+  }
+
+  .search {
+    order: 5;
+    flex: 1 1 100%;
+  }
+
+  header nav {
+    order: 6;
+    flex: 1 1 100%;
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  header nav a {
+    padding: 12px 5px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .menu-toggle:checked ~ nav {
+    display: flex;
+  }
+}
+
+@media (max-width: 640px) {
+  .topbar {
+    font-size: 10px;
+  }
+
+  .wrap {
+    width: 94%;
+  }
+
+  .slide {
+    min-height: 200px;
+    padding: 25px;
+  }
+
+  .arrow {
+    display: none;
+  }
+
+  .cats {
+    --gap: 12px;
+  }
+
+  .cats li {
+    flex-basis: 112px;
+  }
+
+  .gallery {
+    height: auto;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1.4fr 1fr 1fr;
+  }
+
+  .gallery .tile {
+    min-height: 150px;
+  }
+
+  .g1 {
+    grid-column: 1 / 3;
+    grid-row: 1;
+    min-height: 280px;
+  }
+
+  .g2 {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .g3 {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .g4 {
+    grid-column: 1 / 3;
+    grid-row: 3;
+    min-height: 240px;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .tag-info {
+    width: min(200px, calc(100vw - 30px));
+    max-width: calc(100vw - 30px);
+  }
+
+  .t3 .tag-info,
+  .t4 .tag-info,
+  .t5 .tag-info {
+    left: auto;
+    right: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="topbar">
+  <span><i class="bi bi-globe2"></i> PH | English</span>
+  <span><i class="bi bi-geo-alt"></i> Pasay City</span>
+</div>
+
+<header>
+  <input type="checkbox" id="menu" class="menu-toggle" hidden>
+  <label for="menu" class="menu-btn" aria-label="Toggle menu">
+    <i class="bi bi-list"></i>
+  </label>
+
+  <a href="#" class="logo">iBUY</a>
+
+  <nav aria-label="Main">
+    <a href="#">Products</a>
+    <a href="#">Rooms</a>
+    <a href="#">Offers</a>
+    <a href="#">Planning</a>
+    <a href="#">Services</a>
+  </nav>
+
+  <form class="search" role="search" onsubmit="return false">
+    <i class="bi bi-search"></i>
+    <input type="search" placeholder="What are you looking for?" aria-label="Search">
+    <i class="bi bi-camera"></i>
+  </form>
+
+  <div class="actions">
+    <a href="#"><i class="bi bi-person"></i><span class="label">Log In</span></a>
+    <a href="#" aria-label="Delivery"><i class="bi bi-truck"></i></a>
+    <a href="#" aria-label="Wishlist"><i class="bi bi-heart"></i></a>
+    <a href="#" aria-label="Cart"><i class="bi bi-bag"></i></a>
+  </div>
+</header>
+
+<main class="wrap" id="main">
+
+  <section class="hero" aria-label="Featured" id="hero">
+    <div class="slides" id="slides">
+      <div class="slide">
+        <div class="ph">
+          <img src="images/banner1.jpg" alt="">
+        </div>
+        <h1>Quality furniture<br>for every Filipino</h1>
+      </div>
+
+      <div class="slide">
+        <div class="ph">
+          <img src="images/banner2.jpg" alt="" loading="lazy">
+        </div>
+        <h1>Smart storage<br>for small spaces</h1>
+      </div>
+
+      <div class="slide">
+        <div class="ph">
+          <img src="images/banner3.jpg" alt="" loading="lazy">
+        </div>
+        <h1>Make every room<br>feel like home</h1>
+      </div>
+    </div>
+
+    <div class="dots" id="dots">
+      <button aria-label="Go to slide 1" aria-current="true"></button>
+      <button aria-label="Go to slide 2"></button>
+      <button aria-label="Go to slide 3"></button>
+    </div>
+  </section>
+
+  <div class="cats-wrap">
+    <button class="arrow" id="prev" aria-label="Previous">
+      <i class="bi bi-chevron-left"></i>
+    </button>
+
+    <ul class="cats" id="cats">
+      <li><a class="cat" href="#"><div class="ph"><img src="images/cat-storage.png" alt="" loading="lazy"></div>Storage furniture</a></li>
+      <li><a class="cat" href="#"><div class="ph"><img src="images/cat-organizer.png" alt="" loading="lazy"></div>Small storage boxes and organizers</a></li>
+      <li><a class="cat" href="#"><div class="ph"><img src="images/cat-kids.png" alt="" loading="lazy"></div>Children &amp; Baby</a></li>
+      <li><a class="cat" href="#"><div class="ph"><img src="images/cat-bed.png" alt="" loading="lazy"></div>Beds &amp; Mattresses</a></li>
+      <li><a class="cat" href="#"><div class="ph"><img src="images/cat-sofa.png" alt="" loading="lazy"></div>Sofas &amp; Armchairs</a></li>
+      <li><a class="cat" href="#"><div class="ph"><img src="images/cat-table.png" alt="" loading="lazy"></div>Tables &amp; Chairs</a></li>
+      <li><a class="cat" href="#"><div class="ph"><img src="images/cat-kitchen.png" alt="" loading="lazy"></div>Kitchenware &amp; Tableware</a></li>
+    </ul>
+
+    <button class="arrow" id="next" aria-label="Next">
+      <i class="bi bi-chevron-right"></i>
+    </button>
+  </div>
+
+  <section class="welcome">
+    <h2>Welcome to iBUY Philippines</h2>
+    <p>Discover smart home solutions and affordable products today.</p>
+  </section>
+
+  <section class="showcase">
+    <div class="gallery">
+
+      <div class="tile g1 ph">
+        <div class="tile-image">
+          <img src="images/gallery-living.jpg" alt="Living room" loading="lazy">
+        </div>
+
+        <span class="tag t1">
+          <span class="tag-head">
+            <span class="tag-name">
+              <b>LUMINA</b>
+              Lamp shade<br>
+              <span class="tag-price">₱1,850</span>
+            </span>
+            <button class="tag-toggle" type="button" aria-label="Show LUMINA details" aria-expanded="false">
+              <i class="bi bi-chevron-down"></i>
+            </button>
+          </span>
+
+          <span class="tag-info">
+            <p>Soft woven shade that spreads a warm, even glow.</p>
+            <dl>
+              <dt>Size</dt><dd>Ø 35 cm, H 28 cm</dd>
+              <dt>Colors</dt><dd>Natural, White</dd>
+              <dt>Note</dt><dd>Bulb sold separately</dd>
+            </dl>
+          </span>
+        </span>
+
+        <span class="tag t2">
+          <span class="tag-head">
+            <span class="tag-name">
+              <b>KALLAX</b>
+              Shelf unit<br>
+              <span class="tag-price">₱2,995</span>
+            </span>
+            <button class="tag-toggle" type="button" aria-label="Show KALLAX details" aria-expanded="false">
+              <i class="bi bi-chevron-down"></i>
+            </button>
+          </span>
+
+          <span class="tag-info">
+            <p>Cube shelf for books, baskets and display pieces.</p>
+            <dl>
+              <dt>Size</dt><dd>77 × 77 × 39 cm</dd>
+              <dt>Colors</dt><dd>White, Oak</dd>
+              <dt>Fits</dt><dd>4 storage boxes</dd>
+            </dl>
+          </span>
+        </span>
+      </div>
+
+      <div class="tile g2 ph">
+        <div class="tile-image">
+          <img src="images/gallery-tv.jpg" alt="TV unit" loading="lazy">
+        </div>
+
+        <span class="tag t3">
+          <span class="tag-head">
+            <span class="tag-name">
+              <b>SHADOW</b>
+              TV Unit<br>
+              <span class="tag-price">₱1,700</span>
+            </span>
+            <button class="tag-toggle" type="button" aria-label="Show SHADOW details" aria-expanded="false">
+              <i class="bi bi-chevron-down"></i>
+            </button>
+          </span>
+
+          <span class="tag-info">
+            <p>Low TV bench with an open shelf and cable hole.</p>
+            <dl>
+              <dt>Size</dt><dd>120 × 40 × 45 cm</dd>
+              <dt>Holds</dt><dd>TVs up to 50 kg</dd>
+              <dt>Colors</dt><dd>White, Walnut</dd>
+            </dl>
+          </span>
+        </span>
+      </div>
+
+      <div class="tile g3 ph">
+        <div class="tile-image">
+          <img src="images/gallery-couch.jpg" alt="Couch set" loading="lazy">
+        </div>
+
+        <span class="tag t4">
+          <span class="tag-head">
+            <span class="tag-name">
+              <b>FLEUR</b>
+              Couch set<br>
+              <span class="tag-price">₱4,666</span>
+            </span>
+            <button class="tag-toggle" type="button" aria-label="Show FLEUR details" aria-expanded="false">
+              <i class="bi bi-chevron-down"></i>
+            </button>
+          </span>
+
+          <span class="tag-info">
+            <p>Compact 2-seater with washable, removable covers.</p>
+            <dl>
+              <dt>Size</dt><dd>150 × 80 × 75 cm</dd>
+              <dt>Seats</dt><dd>2 people</dd>
+              <dt>Colors</dt><dd>Mustard, Sage, Gray</dd>
+            </dl>
+          </span>
+        </span>
+      </div>
+
+      <div class="tile g4 ph">
+        <div class="tile-image">
+          <img src="images/gallery-dining.jpg" alt="Dining area" loading="lazy">
+        </div>
+
+        <span class="tag t5">
+          <span class="tag-head">
+            <span class="tag-name">
+              <b>LUZ</b>
+              Ceiling light<br>
+              <span class="tag-price">₱2,500</span>
+            </span>
+            <button class="tag-toggle" type="button" aria-label="Show LUZ details" aria-expanded="false">
+              <i class="bi bi-chevron-down"></i>
+            </button>
+          </span>
+
+          <span class="tag-info">
+            <p>Pendant light with a frosted glass shade.</p>
+            <dl>
+              <dt>Size</dt><dd>Ø 30 cm</dd>
+              <dt>Cord</dt><dd>150 cm, adjustable</dd>
+              <dt>Bulb</dt><dd>E27, max 40W</dd>
+            </dl>
+          </span>
+        </span>
+      </div>
+
+    </div>
+
+    <div class="copy">
+      <h3>Make space for what matters</h3>
+      <p>Organizing isn’t just about decluttering—it’s about creating room for what truly matters. With iBUY’s smart and versatile storage, Filipinos can cherish their memories while staying beautifully organized.</p>
+      <a class="btn" href="#">Explore New Finds</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span>© iBUY Philippines</span>
+  <nav aria-label="Footer">
+    <a href="#">Help</a>
+    <a href="#">Delivery</a>
+    <a href="#">Returns</a>
+    <a href="#">Contact us</a>
+  </nav>
+</footer>
+
+<script>
+/* Category slider */
+const track = document.getElementById("cats");
+const prev = document.getElementById("prev");
+const next = document.getElementById("next");
+
+const step = () =>
+  track.querySelector("li").offsetWidth +
+  parseFloat(getComputedStyle(track).gap);
+
+const updateButtons = () => {
+  prev.disabled = track.scrollLeft <= 2;
+  next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
+};
+
+prev.onclick = () => track.scrollBy({
+  left: -step() * 2,
+  behavior: "smooth"
+});
+
+next.onclick = () => track.scrollBy({
+  left: step() * 2,
+  behavior: "smooth"
+});
+
+track.addEventListener("scroll", updateButtons);
+window.addEventListener("resize", updateButtons);
+updateButtons();
+
+/* Hero slider */
+const slides = document.getElementById("slides");
+const hero = document.getElementById("hero");
+const dots = document.querySelectorAll("#dots button");
+
+let current = 0;
+let paused = false;
+
+const goTo = i => slides.scrollTo({
+  left: i * slides.clientWidth,
+  behavior: "smooth"
+});
+
+dots.forEach((dot, i) => {
+  dot.addEventListener("click", () => goTo(i));
+});
+
+slides.addEventListener("scroll", () => {
+  current = Math.round(slides.scrollLeft / slides.clientWidth);
+
+  dots.forEach((dot, i) => {
+    dot.setAttribute("aria-current", i === current);
+  });
+});
+
+if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  ["mouseenter", "focusin", "touchstart"].forEach(event => {
+    hero.addEventListener(event, () => paused = true, { passive: true });
+  });
+
+  ["mouseleave", "focusout"].forEach(event => {
+    hero.addEventListener(event, () => paused = false);
+  });
+
+  setInterval(() => {
+    if (!paused && !document.hidden) {
+      goTo((current + 1) % dots.length);
+    }
+  }, 6000);
+}
+
+/* Product tags */
+const tags = document.querySelectorAll(".tag");
+
+const closeTags = () => {
+  tags.forEach(tag => {
+    tag.classList.remove("open");
+    tag.querySelector(".tag-toggle").setAttribute("aria-expanded", "false");
+  });
+};
+
+tags.forEach(tag => {
+  const button = tag.querySelector(".tag-toggle");
+
+  button.addEventListener("click", event => {
+    event.stopPropagation();
+
+    const wasOpen = tag.classList.contains("open");
+    closeTags();
+
+    if (!wasOpen) {
+      tag.classList.add("open");
+      button.setAttribute("aria-expanded", "true");
+    }
+  });
+});
+
+document.addEventListener("click", event => {
+  if (!event.target.closest(".tag")) closeTags();
+});
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") closeTags();
+});
+</script>
+
+</body>
+</html>
+
