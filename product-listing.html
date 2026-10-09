@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>iBUY | Products</title>
+
+  <!-- Bootstrap + Bootstrap Icons (CDN) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ibuy-blue: #0058a3;
+      --ibuy-yellow: #ffdb00;
+      --sidebar-bg: #ececec;
+      --sidebar-active: #cfcfcf;
+      --pill-bg: #d9d9d9;
+      --ink: #111;
+      --muted: #666;
+      --sidebar-w: 245px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: #fff;
+      margin: 0;
+    }
+
+    /* ---------- Top utility bar ---------- */
+    .topbar {
+      background: var(--ibuy-blue);
+      color: #fff;
+      font-size: 0.6rem;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      position: sticky;
+      top: 0;
+      z-index: 1030;
+    }
+    .topbar a { color: #fff; text-decoration: none; }
+    .topbar i { font-size: 0.8rem; margin-right: 6px; }
+
+    /* ---------- Layout ---------- */
+    .shell { display: flex; min-height: calc(100vh - 32px); }
+
+    .sidebar {
+      width: var(--sidebar-w);
+      flex: 0 0 var(--sidebar-w);
+      background: var(--sidebar-bg);
+      position: sticky;
+      top: 32px;
+      height: calc(100vh - 32px);
+      overflow-y: auto;
+      padding-bottom: 24px;
+    }
+
+    .logo {
+      display: inline-block;
+      margin: 10px 0 0 22px;
+      background: var(--ibuy-blue);
+      padding: 6px 4px;
+      line-height: 1;
+    }
+    .logo span {
+      display: block;
+      background: var(--ibuy-yellow);
+      color: var(--ibuy-blue);
+      font-weight: 800;
+      font-size: 0.8rem;
+      padding: 4px 10px;
+      border-radius: 50%;
+      letter-spacing: -0.5px;
+    }
+
+    .sidebar-head {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      padding: 34px 0 0 16px;
+    }
+    .sidebar-head .btn-close-nav {
+      background: none; border: 0; padding: 0; font-size: 1.4rem; color: var(--ink);
+      line-height: 1;
+    }
+    .sidebar-head h1 { font-size: 1.5rem; font-weight: 700; margin: 0; }
+
+    .nav-main { list-style: none; padding: 0 0 0 48px; margin: 30px 0 22px; }
+    .nav-main a {
+      display: block; padding: 3px 0;
+      font-size: 0.72rem; font-weight: 700; color: var(--ink); text-decoration: none;
+    }
+    .nav-main a:hover, .nav-main a.active { text-decoration: underline; }
+
+    .nav-cat { list-style: none; margin: 0; padding: 0; }
+    .nav-cat button {
+      display: block; width: 100%; text-align: left;
+      background: none; border: 0; border-right: 4px solid transparent;
+      padding: 7px 0 7px 48px;
+      font-size: 0.72rem; color: var(--ink);
+    }
+    .nav-cat button:hover { background: #e0e0e0; }
+    .nav-cat button.active {
+      background: var(--sidebar-active);
+      border-right-color: #888;
+      padding-top: 11px; padding-bottom: 11px;
+    }
+    .nav-cat .gap { height: 8px; }
+    .nav-cat .more { margin-top: 12px; color: var(--muted); }
+
+    /* ---------- Main ---------- */
+    .main { flex: 1; min-width: 0; padding: 14px 32px 40px 24px; }
+
+    .main-top {
+      display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    }
+    .search {
+      flex: 0 1 390px;
+      background: #f3f3f3; border-radius: 50rem;
+    }
+    .search .form-control, .search .input-group-text {
+      background: transparent; border: 0; box-shadow: none; font-size: 0.7rem;
+    }
+    .search .form-control { padding-left: 0; }
+    .search .form-control::placeholder { color: #777; }
+    .search .input-group-text { color: #444; font-size: 1rem; }
+
+    .util { display: flex; align-items: center; gap: 22px; font-size: 0.68rem; }
+    .util a { color: var(--ink); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+    .util i { font-size: 1rem; }
+    .util .icons { display: flex; gap: 12px; }
+
+    /* Filters */
+    .filters {
+      display: flex; flex-wrap: wrap; gap: 14px;
+      padding: 22px 0 14px; margin-bottom: 18px;
+      border-bottom: 1px solid #ddd;
+    }
+    .filters .btn-pill {
+      background: var(--pill-bg); color: #444; border: 0; border-radius: 50rem;
+      font-size: 0.68rem; font-weight: 600; padding: 9px 16px;
+    }
+    .filters .btn-pill::after { display: none; }
+    .filters .btn-pill i { margin-left: 6px; font-size: 0.65rem; }
+    .filters .dropdown-menu { font-size: 0.75rem; }
+
+    .section-title { font-size: 0.8rem; color: var(--muted); margin: 0 0 14px; }
+
+    /* Product cards */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+      gap: 28px 18px;
+    }
+    .product .thumb {
+      aspect-ratio: 1 / 1;
+      border: 1px solid #ccc;
+      background: linear-gradient(180deg, #fff 0%, #e4e4ec 100%);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+      color: #6d7b6f;
+      font-size: 4.2rem;
+      position: relative;
+    }
+    .product .thumb img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .product .meta {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      margin-top: 10px; gap: 6px;
+    }
+    .product .name { font-size: 0.72rem; font-weight: 600; line-height: 1.25; margin: 0; }
+    .product .price { font-size: 0.7rem; color: #444; margin: 2px 0 0; }
+    .product .actions { display: flex; gap: 6px; flex-shrink: 0; }
+    .product .actions button {
+      background: none; border: 0; padding: 0; font-size: 1rem; color: var(--ink);
+    }
+    .product .actions button:hover { color: var(--ibuy-blue); }
+    .product .actions .liked { color: #c4262e; }
+    .product .rating { font-size: 0.6rem; color: #f5b301; margin-top: 8px; display: flex; align-items: center; gap: 1px; }
+    .product .rating span { color: #555; margin-left: 5px; }
+
+    /* Toast placement */
+    .toast-container { z-index: 2000; }
+
+    /* ---------- Mobile ---------- */
+    .menu-toggle { display: none; }
+    @media (max-width: 991.98px) {
+      .topbar { padding: 0 16px; }
+      .sidebar {
+        position: fixed; left: 0; top: 32px; z-index: 1040;
+        transform: translateX(-100%); transition: transform .2s ease;
+        box-shadow: 0 0 0 100vmax rgba(0,0,0,0);
+      }
+      .sidebar.open { transform: none; box-shadow: 0 0 0 100vmax rgba(0,0,0,.35); }
+      .main { padding: 14px 16px 40px; }
+      .menu-toggle { display: inline-flex; background: none; border: 0; font-size: 1.5rem; padding: 0; }
+      .util .label { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .sidebar { transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top utility bar -->
+  <div class="topbar">
+    <a href="#">PH | English</a>
+    <a href="#"><i class="bi bi-shop-window"></i>Pasay City</a>
+  </div>
+
+  <div class="shell">
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar" id="sidebar" aria-label="Product navigation">
+      <a href="#" class="logo" aria-label="iBUY home"><span>iBUY</span></a>
+
+      <div class="sidebar-head">
+        <button class="btn-close-nav" id="closeNav" aria-label="Close menu"><i class="bi bi-x-lg"></i></button>
+        <h1>Products</h1>
+      </div>
+
+      <ul class="nav-main">
+        <li><a href="#" data-special="Marketplace">Marketplace</a></li>
+        <li><a href="#" data-special="Series">Series</a></li>
+        <li><a href="#" data-special="Limited Collection">Limited Collection</a></li>
+      </ul>
+
+      <ul class="nav-cat" id="catNav"></ul>
+    </aside>
+
+    <!-- ================= MAIN ================= -->
+    <main class="main">
+
+      <div class="main-top">
+        <button class="menu-toggle" id="openNav" aria-label="Open menu"><i class="bi bi-list"></i></button>
+
+        <div class="input-group search">
+          <span class="input-group-text"><i class="bi bi-search"></i></span>
+          <input type="search" class="form-control" placeholder="What are you looking for?" aria-label="Search products">
+          <span class="input-group-text"><i class="bi bi-camera"></i></span>
+        </div>
+
+        <div class="util">
+          <a href="#"><i class="bi bi-person"></i><span class="label">Log In</span></a>
+          <span class="icons">
+            <a href="#" aria-label="Delivery"><i class="bi bi-truck"></i></a>
+            <a href="#" aria-label="Wishlist"><i class="bi bi-heart"></i></a>
+            <a href="#" aria-label="Cart"><i class="bi bi-bag"></i></a>
+          </span>
+        </div>
+      </div>
+
+      <!-- Filter pills (Bootstrap dropdowns) -->
+      <div class="filters">
+        <div class="dropdown">
+          <button class="btn btn-pill dropdown-toggle" data-bs-toggle="dropdown">Sort<i class="bi bi-chevron-down"></i></button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Featured</a></li>
+            <li><a class="dropdown-item" href="#">Price: low to high</a></li>
+            <li><a class="dropdown-item" href="#">Price: high to low</a></li>
+            <li><a class="dropdown-item" href="#">Name: A to Z</a></li>
+          </ul>
+        </div>
+        <div class="dropdown">
+          <button class="btn btn-pill dropdown-toggle" data-bs-toggle="dropdown">Type<i class="bi bi-chevron-down"></i></button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">All types</a></li>
+            <li><a class="dropdown-item" href="#">Seating</a></li>
+            <li><a class="dropdown-item" href="#">Tables</a></li>
+            <li><a class="dropdown-item" href="#">Storage</a></li>
+          </ul>
+        </div>
+        <div class="dropdown">
+          <button class="btn btn-pill dropdown-toggle" data-bs-toggle="dropdown">Features<i class="bi bi-chevron-down"></i></button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Swivel</a></li>
+            <li><a class="dropdown-item" href="#">Upholstered</a></li>
+            <li><a class="dropdown-item" href="#">Solid wood</a></li>
+          </ul>
+        </div>
+        <div class="dropdown">
+          <button class="btn btn-pill dropdown-toggle" data-bs-toggle="dropdown">Size<i class="bi bi-chevron-down"></i></button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Small</a></li>
+            <li><a class="dropdown-item" href="#">Medium</a></li>
+            <li><a class="dropdown-item" href="#">Large</a></li>
+          </ul>
+        </div>
+        <div class="dropdown">
+          <button class="btn btn-pill dropdown-toggle" data-bs-toggle="dropdown">Color<i class="bi bi-chevron-down"></i></button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Green</a></li>
+            <li><a class="dropdown-item" href="#">Brown</a></li>
+            <li><a class="dropdown-item" href="#">Black</a></li>
+            <li><a class="dropdown-item" href="#">Natural wood</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="section-title" id="sectionTitle" aria-live="polite"></p>
+      <section class="grid" id="productGrid"></section>
+    </main>
+  </div>
+
+  <!-- Toast feedback for cart -->
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="cartToast" class="toast align-items-center text-bg-dark border-0" role="status" aria-live="polite" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body" id="toastBody"></div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    /*
+      Product data. Each `img` is an online photo (loremflickr.com, keyword-matched stock
+      photos). If it fails to load, the Bootstrap Icon in `icon` shows as the backup.
+      Swap any `img` for your own URL or local file, e.g. img: "images/bella.jpg"
+    */
+    const CATALOG = {
+        "Furniture": [
+            { name: "Bella Swivel Chair", price: 568.15, icon: "bi-lamp", img: "https://images.unsplash.com/photo-1580481072645-022f9a6d1270?w=400&h=400&fit=crop" },
+            { name: "Upholstered Armchair", price: 751.00, icon: "bi-lamp", img: "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?w=400&h=400&fit=crop" },
+            { name: "Chaise Longue", price: 400.00, icon: "bi-lamp", img: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&h=400&fit=crop" },
+            { name: "Leather Chair", price: 940.12, icon: "bi-lamp", img: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=400&fit=crop" },
+            { name: "Wingback Chair", price: 768.15, icon: "bi-lamp", img: "https://images.unsplash.com/photo-1581539250439-c96689b516dd?w=400&h=400&fit=crop" },
+            { name: "Solid Wood Dining Table", price: 1045.15, icon: "bi-table", img: "https://images.unsplash.com/photo-1615066390971-03e4e1c36ddf?w=400&h=400&fit=crop" },
+            { name: "Glass Cabinet", price: 1504.14, icon: "bi-archive", img: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=400&h=400&fit=crop" },
+            { name: "Modern Nightstand", price: 302.40, icon: "bi-archive", img: "https://images.unsplash.com/photo-1532323544230-7191fd51bc1b?w=400&h=400&fit=crop" }
+        ],
+        "Beds & Mattresses": [
+            { name: "Queen Platform Bed", price: 1899.00, icon: "bi-moon-stars", img: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=400&h=400&fit=crop" },
+            { name: "Memory Foam Mattress", price: 1299.50, icon: "bi-moon-stars", img: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=400&h=400&fit=crop" },
+            { name: "Upholstered Headboard", price: 420.00, icon: "bi-moon-stars", img: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=400&h=400&fit=crop" },
+            { name: "Bunk Bed Frame", price: 980.00, icon: "bi-moon-stars", img: "https://images.unsplash.com/photo-1540518614846-7eded433c457?w=400&h=400&fit=crop" }
+        ],
+        "Storage & Organization": [
+            { name: "Bookshelf, 5 Tier", price: 345.90, icon: "bi-bookshelf", img: "https://images.unsplash.com/photo-1594620302200-9a762244a156?w=400&h=400&fit=crop" },
+            { name: "Shoe Rack", price: 120.00, icon: "bi-boxes", img: "https://images.unsplash.com/photo-1588854337221-4cf9fa96059c?w=400&h=400&fit=crop" },
+            { name: "Storage Boxes, Set of 3", price: 59.99, icon: "bi-box-seam", img: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=400&h=400&fit=crop" },
+            { name: "Wardrobe Organizer", price: 210.25, icon: "bi-boxes", img: "https://images.unsplash.com/photo-1558882224-dda166733046?w=400&h=400&fit=crop" }
+        ],
+        "Kitchenware": [
+            { name: "Ceramic Cookware Set", price: 189.00, icon: "bi-cup-hot", img: "https://images.unsplash.com/photo-1584992236310-6edddc08acff?w=400&h=400&fit=crop" },
+            { name: "Chef's Knife", price: 45.50, icon: "bi-egg-fried", img: "https://images.unsplash.com/photo-1593618998160-e34014e67546?w=400&h=400&fit=crop" },
+            { name: "Glass Food Containers", price: 32.00, icon: "bi-box-seam", img: "https://images.unsplash.com/photo-1610557892470-55d9e80c0bce?w=400&h=400&fit=crop" },
+            { name: "Cast Iron Skillet", price: 64.75, icon: "bi-egg-fried", img: "https://images.unsplash.com/photo-1585515320310-259814833e62?w=400&h=400&fit=crop" }
+        ],
+        "Appliances": [
+            { name: "Air Fryer, 5L", price: 129.99, icon: "bi-fan", img: "https://images.unsplash.com/photo-1626143501060-6428d09e5303?w=400&h=400&fit=crop" },
+            { name: "Rice Cooker", price: 74.00, icon: "bi-cpu", img: "https://images.unsplash.com/photo-1544233726-9f1d2b27be8b?w=400&h=400&fit=crop" },
+            { name: "Electric Kettle", price: 39.90, icon: "bi-cup-hot", img: "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f6?w=400&h=400&fit=crop" },
+            { name: "Stand Mixer", price: 249.00, icon: "bi-gear", img: "https://images.unsplash.com/photo-1594385208974-2e75f8d7bb48?w=400&h=400&fit=crop" }
+        ],
+        "Home Decor": [
+            { name: "Woven Wall Basket", price: 28.00, icon: "bi-flower1", img: "https://images.unsplash.com/photo-1616046229478-9901c5536a45?w=400&h=400&fit=crop" },
+            { name: "Ceramic Vase", price: 36.50, icon: "bi-flower2", img: "https://images.unsplash.com/photo-1612196808214-b7e239e5f6b7?w=400&h=400&fit=crop" },
+            { name: "Framed Art Print", price: 52.00, icon: "bi-image", img: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=400&h=400&fit=crop" },
+            { name: "Round Mirror", price: 98.00, icon: "bi-circle", img: "https://images.unsplash.com/photo-1618220179428-22790b461013?w=400&h=400&fit=crop" }
+        ],
+        "Home Textiles": [
+            { name: "Linen Duvet Cover", price: 89.00, icon: "bi-layers", img: "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=400&h=400&fit=crop" },
+            { name: "Cotton Throw Blanket", price: 45.00, icon: "bi-layers", img: "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?w=400&h=400&fit=crop" },
+            { name: "Blackout Curtains", price: 64.00, icon: "bi-layout-sidebar", img: "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=400&h=400&fit=crop" },
+            { name: "Bath Towel Set", price: 38.00, icon: "bi-layers", img: "https://images.unsplash.com/photo-1616627547584-bf28cee262db?w=400&h=400&fit=crop" }
+        ],
+        "Smart Home": [
+            { name: "Smart Bulb, 4 Pack", price: 34.99, icon: "bi-lightbulb", img: "https://images.unsplash.com/photo-1550985616-10810253b84d?w=400&h=400&fit=crop" },
+            { name: "Wi-Fi Smart Plug", price: 14.50, icon: "bi-plug", img: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=400&fit=crop" },
+            { name: "Video Doorbell", price: 119.00, icon: "bi-bell", img: "https://images.unsplash.com/photo-1558002038-1055907df827?w=400&h=400&fit=crop" },
+            { name: "Smart Speaker", price: 79.00, icon: "bi-speaker", img: "https://images.unsplash.com/photo-1543512214-318c7553f230?w=400&h=400&fit=crop" }
+        ],
+        "Lighting": [
+            { name: "Arc Floor Lamp", price: 135.00, icon: "bi-lamp", img: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=400&h=400&fit=crop" },
+            { name: "Pendant Light", price: 88.00, icon: "bi-lightbulb", img: "https://images.unsplash.com/photo-1524484485831-a92ffc0de03f?w=400&h=400&fit=crop" },
+            { name: "Desk Lamp", price: 29.90, icon: "bi-lightbulb", img: "https://images.unsplash.com/photo-1534105777770-e52228102b21?w=400&h=400&fit=crop" },
+            { name: "LED Strip Lights", price: 19.99, icon: "bi-lightbulb", img: "https://images.unsplash.com/photo-1563245372-f21724e3856d?w=400&h=400&fit=crop" }
+        ],
+        "Bathroom": [
+            { name: "Bamboo Bath Mat", price: 24.00, icon: "bi-droplet", img: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=400&h=400&fit=crop" },
+            { name: "Shower Caddy", price: 18.50, icon: "bi-droplet", img: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=400&h=400&fit=crop" },
+            { name: "Soap Dispenser", price: 12.00, icon: "bi-droplet-half", img: "https://images.unsplash.com/photo-1608248597262-3c874271813f?w=400&h=400&fit=crop" },
+            { name: "Wall Cabinet", price: 160.00, icon: "bi-archive", img: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=400&h=400&fit=crop" }
+        ],
+        "Baby & Kids": [
+            { name: "Convertible Crib", price: 520.00, icon: "bi-balloon", img: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400&h=400&fit=crop" },
+            { name: "Kids Study Desk", price: 185.00, icon: "bi-balloon", img: "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?w=400&h=400&fit=crop" },
+            { name: "Toy Storage Bin", price: 42.00, icon: "bi-boxes", img: "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=400&h=400&fit=crop" },
+            { name: "Play Mat", price: 55.00, icon: "bi-puzzle", img: "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=400&h=400&fit=crop" }
+        ],
+        "Rugs": [
+            { name: "Wool Area Rug 5x8", price: 340.00, icon: "bi-grid-3x3", img: "https://images.unsplash.com/photo-1600121848594-d8644e57abab?w=400&h=400&fit=crop" },
+            { name: "Jute Round Rug", price: 120.00, icon: "bi-circle", img: "https://images.unsplash.com/photo-1575414003591-ece8d0416c7a?w=400&h=400&fit=crop" },
+            { name: "Washable Runner", price: 75.00, icon: "bi-grid-3x3", img: "https://images.unsplash.com/photo-1534889156217-d643df14f14a?w=400&h=400&fit=crop" },
+            { name: "Shag Rug", price: 98.00, icon: "bi-grid-3x3", img: "https://images.unsplash.com/photo-1600121848594-d8644e57abab?w=400&h=400&fit=crop" }
+        ],
+        "More": [
+            { name: "Garden Bench", price: 210.00, icon: "bi-tree", img: "https://images.unsplash.com/photo-1519331379826-f10be5486c6f?w=400&h=400&fit=crop" },
+            { name: "Outdoor Planter", price: 48.00, icon: "bi-flower3", img: "https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=400&h=400&fit=crop" },
+            { name: "Laundry Hamper", price: 36.00, icon: "bi-basket", img: "https://images.unsplash.com/photo-1610557892470-55d9e80c0bce?w=400&h=400&fit=crop" },
+            { name: "Pet Bed", price: 52.00, icon: "bi-heart", img: "https://images.unsplash.com/photo-1541599540903-216a46ca1dc0?w=400&h=400&fit=crop" }
+        ]
+    };
+
+    // Items shown in the "Marketplace / Series / Limited Collection" links (re-uses catalog items)
+    const SPECIAL = {
+      "Marketplace": Object.values(CATALOG).flatMap(l => l.slice(0, 1)),
+      "Series": [CATALOG["Furniture"][0], CATALOG["Furniture"][3], CATALOG["Lighting"][0], CATALOG["Rugs"][0]],
+      "Limited Collection": [CATALOG["Furniture"][6], CATALOG["Furniture"][4], CATALOG["Home Decor"][1], CATALOG["Lighting"][1]]
+    };
+
+    // Sidebar spacing groups (matches the design: gap after Appliances and after Rugs)
+    const GAP_AFTER = ["Appliances", "Rugs"];
+
+    const catNav   = document.getElementById("catNav");
+    const grid     = document.getElementById("productGrid");
+    const title    = document.getElementById("sectionTitle");
+    const sidebar  = document.getElementById("sidebar");
+    const toastEl  = new bootstrap.Toast(document.getElementById("cartToast"), { delay: 2200 });
+
+    let current = { label: "Furniture", items: CATALOG["Furniture"] };
+
+    const peso = n => "₱ " + n.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    const esc  = s => s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+    // Build sidebar categories
+    Object.keys(CATALOG).forEach(cat => {
+      const li = document.createElement("li");
+      li.innerHTML = `<button type="button" data-cat="${esc(cat)}"${cat === "More" ? ' class="more"' : ""}>${esc(cat)}</button>`;
+      catNav.appendChild(li);
+      if (GAP_AFTER.includes(cat)) {
+        const gap = document.createElement("li");
+        gap.className = "gap";
+        catNav.appendChild(gap);
+      }
+    });
+
+    function render() {
+      const items = current.items;
+
+      title.textContent = `${current.label} · ${items.length} products`.replace(" · ", " – ");
+
+      grid.innerHTML = items.map(p => `
+        <article class="product">
+          <div class="thumb">
+            <i class="bi ${p.icon}" aria-hidden="true"></i>
+            ${p.img ? `<img src="${esc(p.img)}" alt="${esc(p.name)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">` : ""}
+          </div>
+          <div class="meta">
+            <div>
+              <h2 class="name">${esc(p.name)}</h2>
+              <p class="price">${peso(p.price)}</p>
+            </div>
+            <div class="actions">
+              <button type="button" class="add-cart" data-name="${esc(p.name)}" aria-label="Add ${esc(p.name)} to cart"><i class="bi bi-cart3"></i></button>
+              <button type="button" class="wish" aria-label="Add ${esc(p.name)} to wishlist"><i class="bi bi-heart"></i></button>
+            </div>
+          </div>
+          <div class="rating" aria-label="Rated 5.0 out of 5">
+            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+            <span>5.0</span>
+          </div>
+        </article>`).join("");
+    }
+
+    function setActive(label, items, btn) {
+      current = { label, items };
+      catNav.querySelectorAll("button").forEach(b => b.classList.toggle("active", b === btn));
+      document.querySelectorAll(".nav-main a").forEach(a => a.classList.toggle("active", !btn && a.dataset.special === label));
+      render();
+      sidebar.classList.remove("open");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    // Sidebar category clicks
+    catNav.addEventListener("click", e => {
+      const btn = e.target.closest("button[data-cat]");
+      if (btn) setActive(btn.dataset.cat, CATALOG[btn.dataset.cat], btn);
+    });
+
+    // Marketplace / Series / Limited Collection
+    document.querySelectorAll(".nav-main a").forEach(a => {
+      a.addEventListener("click", e => {
+        e.preventDefault();
+        setActive(a.dataset.special, SPECIAL[a.dataset.special], null);
+      });
+    });
+
+    // Cart + wishlist buttons
+    grid.addEventListener("click", e => {
+      const cart = e.target.closest(".add-cart");
+      const wish = e.target.closest(".wish");
+      if (cart) {
+        document.getElementById("toastBody").textContent = `${cart.dataset.name} added to cart`;
+        toastEl.show();
+      }
+      if (wish) {
+        const icon = wish.querySelector("i");
+        const on = icon.classList.toggle("bi-heart-fill");
+        icon.classList.toggle("bi-heart", !on);
+        icon.classList.toggle("liked", on);
+      }
+    });
+
+    // Mobile menu
+    document.getElementById("openNav").addEventListener("click", () => sidebar.classList.add("open"));
+    document.getElementById("closeNav").addEventListener("click", () => sidebar.classList.remove("open"));
+
+    // Initial state
+    setActive("Furniture", CATALOG["Furniture"], catNav.querySelector('[data-cat="Furniture"]'));
+    window.scrollTo(0, 0);
+  </script>
+</body>
+</html>
