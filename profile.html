@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>iBuy | My Orders</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap"
+        rel="stylesheet">
+    <link href="profilestyle.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <a class="skip" href="#main">Skip to content</a>
+
+    <div class="topbar">
+        <span><i class="bi bi-globe2"></i> PH | English</span>
+        <span><i class="bi bi-geo-alt"></i> Pasay City</span>
+    </div>
+
+    <header>
+        <input type="checkbox" id="menu" class="menu-toggle" hidden>
+        <label for="menu" class="menu-btn" aria-label="Toggle menu"><i class="bi bi-list"></i></label>
+
+        <a href="#" class="logo">iBUY</a>
+
+        <nav aria-label="Main">
+            <a href="#">Products</a>
+            <a href="#">Rooms</a>
+            <a href="#">Offers</a>
+            <a href="#">Planning</a>
+            <a href="#">Services</a>
+        </nav>
+
+        <form class="search" role="search" onsubmit="return false">
+            <i class="bi bi-search"></i>
+            <input type="search" placeholder="What are you looking for?" aria-label="Search">
+            <i class="bi bi-camera"></i>
+        </form>
+
+        <div class="actions">
+            <a href="#"><i class="bi bi-person"></i><span class="label">Bruce</span></a>
+            <a href="#" aria-label="Delivery"><i class="bi bi-truck"></i></a>
+            <a href="#" aria-label="Wishlist"><i class="bi bi-heart"></i></a>
+            <a href="#" aria-label="Cart"><i class="bi bi-bag"></i></a>
+        </div>
+    </header>
+
+    <main class="wrap" id="main">
+
+        <!-- Profile header -->
+        <header class="profile d-flex align-items-center gap-3 mb-4">
+            <div class="avatar flex-shrink-0"><img
+                    src="https://i.pinimg.com/736x/7f/ee/a0/7feea0cb44cbdd04e38258556bd767fa.jpg" class="img-fluid">
+            </div>
+            <div>
+                <h1 class="h3 fw-bold mb-0">Bruce Wayne</h1>
+                <p class="small fw-semibold mb-1">@def_notBMan | wayneb@gmail.com</p>
+                <a href="#" class="small fw-semibold text-dark text-decoration-none"><i
+                        class="bi bi-pencil-square me-1"></i>Edit Profile</a>
+            </div>
+        </header>
+
+        <div class="row g-3 g-lg-4">
+
+            <!-- Sidebar -->
+            <aside class="col-lg-3">
+                <nav class="side-nav d-flex flex-row flex-lg-column gap-2" aria-label="Account">
+                    <a href="#" class="side-link active"><i class="bi bi-truck"></i>My Orders</a>
+                    <a href="#" class="side-link"><i class="bi bi-geo-alt-fill"></i>Addresses</a>
+                    <a href="#" class="side-link"><i class="bi bi-lock-fill"></i>Account Security</a>
+                    <a href="#" class="side-link"><i class="bi bi-credit-card-fill"></i>Payments</a>
+                    <a href="#" class="side-link"><i class="bi bi-list-ul"></i>Wishlist</a>
+                    <hr class="d-none d-lg-block my-1">
+                    <a href="#" class="side-link"><i class="bi bi-headset"></i>Customer Support</a>
+                    <a href="#" class="side-link"><i class="bi bi-box-arrow-left"></i>Log out</a>
+                </nav>
+            </aside>
+
+            <!-- Content -->
+            <section class="col-lg-9">
+
+                <ul class="status-tabs mb-3" aria-label="Order status">
+                    <li><a class="active" href="#">All</a></li>
+                    <li><a href="#">To Pay</a></li>
+                    <li><a href="#">To Ship</a></li>
+                    <li><a href="#">To Receive</a></li>
+                    <li><a href="#">Completed</a></li>
+                    <li><a href="#">Cancelled</a></li>
+                </ul>
+
+                <div class="order-search mb-3">
+                    <i class="bi bi-search"></i>
+                    <input type="search" placeholder="Search by Seller Name, Order ID or Product Name"
+                        aria-label="Search orders">
+                </div>
+
+                <!-- Scrollable orders panel -->
+                <div class="orders-panel">
+
+                    <!-- Order 1 (from reference) -->
+                    <article class="order-card">
+                        <h2 class="h5 fw-bold mb-1">Order #: 73262</h2>
+                        <p class="text-secondary small mb-0">4 Products | By Alex John | 13:45, Nov 10, 2025</p>
+                        <hr>
+                        <dl class="order-info">
+                            <dt>Status:</dt>
+                            <dd class="status on-the-way">On the way</dd>
+                            <dt>Date of delivery:</dt>
+                            <dd>Fri, 13 Nov, 2025</dd>
+                            <dt>Delivered to:</dt>
+                            <dd>Great street, New York Brooklyn 5A, PO: 212891</dd>
+                            <dt class="fw-bold text-dark">Total:</dt>
+                            <dd class="fw-bold">USD 340.00</dd>
+                        </dl>
+                        <hr>
+                        <div class="row g-3">
+                            <div class="col-12 col-md-6">
+                                <div class="item">
+                                    <div class="thumb"><i class="bi bi-cup-hot"></i></div>
+                                    <div>
+                                        <p class="item-name">Great product name goes here</p>
+                                        <p class="item-meta">Quantity: 1x = USD 340<br>Color: Silver<br>Size: Large</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="item">
+                                    <div class="thumb"><i class="bi bi-lamp"></i></div>
+                                    <div>
+                                        <p class="item-name">Table lamp for oval room</p>
+                                        <p class="item-meta">Quantity: 1x = USD 340<br>Color: Silver<br>Size: Large</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="item">
+                                    <div class="thumb"><i class="bi bi-cup"></i></div>
+                                    <div>
+                                        <p class="item-name">Great product name goes here</p>
+                                        <p class="item-meta">Quantity: 2x = USD 87<br>Color: Silver<br>Size: Medium</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="item">
+                                    <div class="thumb"><i class="bi bi-cup-straw"></i></div>
+                                    <div>
+                                        <p class="item-name">Great cup white edition</p>
+                                        <p class="item-meta">Quantity: 1x = USD 42<br>Color: White<br>Size: Small</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Sample order 2 -->
+                    <article class="order-card">
+                        <h2 class="h5 fw-bold mb-1">Order #: 73198</h2>
+                        <p class="text-secondary small mb-0">2 Products | By Maria Santos | 09:20, Nov 6, 2025</p>
+                        <hr>
+                        <dl class="order-info">
+                            <dt>Status:</dt>
+                            <dd class="status delivered">Delivered</dd>
+                            <dt>Date of delivery:</dt>
+                            <dd>Tue, 11 Nov, 2025</dd>
+                            <dt>Delivered to:</dt>
+                            <dd>Maple avenue, New York Queens 12C, PO: 114320</dd>
+                            <dt class="fw-bold text-dark">Total:</dt>
+                            <dd class="fw-bold">USD 128.00</dd>
+                        </dl>
+                        <hr>
+                        <div class="row g-3">
+                            <div class="col-12 col-md-6">
+                                <div class="item">
+                                    <div class="thumb"><i class="bi bi-lightbulb"></i></div>
+                                    <div>
+                                        <p class="item-name">Warm LED desk lamp</p>
+                                        <p class="item-meta">Quantity: 1x = USD 68<br>Color: Black<br>Size: Medium</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="item">
+                                    <div class="thumb"><i class="bi bi-cup-hot"></i></div>
+                                    <div>
+                                        <p class="item-name">Stoneware mug set</p>
+                                        <p class="item-meta">Quantity: 2x = USD 30<br>Color: Beige<br>Size: Standard</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Sample order 3 -->
+                    <article class="order-card">
+                        <h2 class="h5 fw-bold mb-1">Order #: 72954</h2>
+                        <p class="text-secondary small mb-0">1 Product | By Alex John | 17:05, Nov 2, 2025</p>
+                        <hr>
+                        <dl class="order-info">
+                            <dt>Status:</dt>
+                            <dd class="status to-pay">Waiting for payment</dd>
+                            <dt>Date of delivery:</dt>
+                            <dd>To be confirmed</dd>
+                            <dt>Delivered to:</dt>
+                            <dd>Great street, New York Brooklyn 5A, PO: 212891</dd>
+                            <dt class="fw-bold text-dark">Total:</dt>
+                            <dd class="fw-bold">USD 215.00</dd>
+                        </dl>
+                        <hr>
+                        <div class="row g-3">
+                            <div class="col-12 col-md-6">
+                                <div class="item">
+                                    <div class="thumb"><i class="bi bi-lamp-fill"></i></div>
+                                    <div>
+                                        <p class="item-name">Tripod floor lamp</p>
+                                        <p class="item-meta">Quantity: 1x = USD 215<br>Color: Oak<br>Size: Large</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Sample order 4 -->
+                    <article class="order-card">
+                        <h2 class="h5 fw-bold mb-1">Order #: 72811</h2>
+                        <p class="text-secondary small mb-0">3 Products | By Daniel Cruz | 11:40, Oct 28, 2025</p>
+                        <hr>
+                        <dl class="order-info">
+                            <dt>Status:</dt>
+                            <dd class="status cancelled">Cancelled</dd>
+                            <dt>Date of delivery:</dt>
+                            <dd>&mdash;</dd>
+                            <dt>Delivered to:</dt>
+                            <dd>Great street, New York Brooklyn 5A, PO: 212891</dd>
+                            <dt class="fw-bold text-dark">Total:</dt>
+                            <dd class="fw-bold">USD 96.50</dd>
+                        </dl>
+                        <hr>
+                        <div class="row g-3">
+                            <div class="col-12 col-md-6">
+                                <div class="item">
+                                    <div class="thumb"><i class="bi bi-cup-straw"></i></div>
+                                    <div>
+                                        <p class="item-name">Glass tumbler pair</p>
+                                        <p class="item-meta">Quantity: 2x = USD 24<br>Color: Clear<br>Size: Medium</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="item">
+                                    <div class="thumb"><i class="bi bi-bucket"></i></div>
+                                    <div>
+                                        <p class="item-name">Clay plant pot</p>
+                                        <p class="item-meta">Quantity: 1x = USD 28.50<br>Color: Terracotta<br>Size:
+                                            Large</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="item">
+                                    <div class="thumb"><i class="bi bi-cup"></i></div>
+                                    <div>
+                                        <p class="item-name">Ceramic teacup</p>
+                                        <p class="item-meta">Quantity: 1x = USD 20<br>Color: White<br>Size: Small</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <span>&copy; iBUY Philippines</span>
+        <nav aria-label="Footer">
+            <a href="#">Help</a>
+            <a href="#">Delivery</a>
+            <a href="#">Returns</a>
+            <a href="#">Contact us</a>
+        </nav>
+    </footer>
+
+</body>
+
+</html>
