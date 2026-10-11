@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Checkout | iBUY Philippines</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="style.css" rel="stylesheet" />
+    <link href="cart.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header class="topbar">
+      <nav class="navbar navbar-expand-lg navbar-dark container">
+        <a class="navbar-brand" href="#"
+          ><span class="brand-mark">iBUY</span></a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#nav"
+          aria-controls="nav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="nav">
+          <ul class="navbar-nav me-lg-3">
+            <li class="nav-item"><a class="nav-link" href="#">Products</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Rooms</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Offers</a></li>
+          </ul>
+          <form class="search-box flex-grow-1 my-2 my-lg-0" role="search">
+            <input
+              class="form-control"
+              type="search"
+              placeholder="What are you looking for?"
+              aria-label="Search"
+            />
+          </form>
+          <ul class="navbar-nav ms-lg-3">
+            <li class="nav-item">
+              <a class="nav-link" href="login.html">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="register.html">Register</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="shopping-cart.html">Cart</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container page">
+      <div class="row">
+        <!-- Review order -->
+        <div class="col-lg-8 order-2 order-lg-1">
+          <h2 class="review-title"><b>Checkout:</b> Review Order</h2>
+
+          <div class="ship-box">
+            <p class="bold small-text">Delivery Information</p>
+            <p class="small-text">
+              John Doe<br />Address 12334<br />12345678910<br />itsjherwelmarie@gmail.com
+            </p>
+            <a class="small-text" href="#">[ Change Shipping Address ]</a>
+            <p class="small-text mt-2">
+              <b>Delivery method:</b> Click &amp; Collect at iBUY Emeryville
+              4400 Shellmound Street, Pasay City
+            </p>
+            <p class="small-text"><b>Delivery estimate:</b> January 20, 2026</p>
+          </div>
+
+          <div class="order-row">
+            <img
+              class="order-thumb"
+              src="https://placehold.co/200x200/8a9a7b/ffffff?text=Chair"
+              alt="Bella Swivel Chair"
+            />
+            <div class="order-info">
+              <p class="order-name">
+                Bella Swivel Chair <span class="muted small-text">Qty: 1</span>
+              </p>
+              <p class="small-text">Chair, Green</p>
+              <p class="small-text">₱ 3,000 Set</p>
+              <p class="small-text muted">Click &amp; Collect</p>
+            </div>
+            <p class="order-price">PHP. 3,000.00</p>
+          </div>
+
+          <div class="order-row">
+            <img
+              class="order-thumb"
+              src="https://placehold.co/200x200/6b3a1e/ffffff?text=Table"
+              alt="Solid Wood Dining Table"
+            />
+            <div class="order-info">
+              <p class="order-name">
+                Solid Wood Dining Table
+                <span class="muted small-text">Qty: 2</span>
+              </p>
+              <p class="small-text">Dining Table, White</p>
+              <p class="small-text">₱ 1,045.15 each</p>
+              <p class="small-text muted">Click &amp; Collect</p>
+            </div>
+            <p class="order-price">PHP. 2,090.30</p>
+          </div>
+
+          <form action="place-order.html" method="get">
+            <div class="pay-box">
+              <h2 class="review-title"><b>Payment Method</b></h2>
+              <p class="small-text bold">PayPal</p>
+              <p class="small-text muted">
+                You will be redirected to PayPal to complete your purchase.
+              </p>
+            </div>
+
+            <div class="place-box">
+              <h2 class="review-title"><b>Place Order</b></h2>
+              <p class="small-text">3 items &bull; Shipping fee: Free</p>
+              <p class="bold">Total: PHP 5,091.16</p>
+              <label class="agree-row"
+                ><input type="checkbox" name="terms" required />
+                <span
+                  >I agree to the <u>User Agreement</u> and
+                  <u>Privacy Policy</u></span
+                ></label
+              >
+              <button class="btn-ibuy checkout-btn" type="submit">
+                Place order
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Total + similar -->
+        <div class="col-lg-4 order-1 order-lg-2">
+          <p class="small-text text-end">
+            How do you like our new checkout?
+            <a class="bold" href="#">Tell us what you think</a>
+          </p>
+          <div class="total-box">
+            <p class="total-text">Order Summary</p>
+            <div class="sum-line small-text">
+              <span>Subtotal (3 items)</span><span>PHP 5,090.30</span>
+            </div>
+            <div class="sum-line small-text">
+              <span>Shipping fee (Click &amp; Collect)</span><span>Free</span>
+            </div>
+            <div class="sum-line line small-text">
+              <span>Estimated tax</span><span>PHP 0.86</span>
+            </div>
+            <p class="total-text mt-2">Total: PHP 5,091.16</p>
+            <p class="small-text">Covered by iBuy Money Back Guarantee</p>
+            <label class="small-text d-block my-2"
+              ><input type="checkbox" /> Receive exclusive offers and promotions
+              from iBuy</label
+            >
+            <p class="small-text">
+              Continue to PayPal to complete your purchase
+            </p>
+            <a href="place-order.html" class="btn-ibuy-blue continue-btn rounded-5"
+              >Continue</a
+            >
+          </div>
+          <label class="agree-row"
+            ><input type="checkbox" required/>
+            <span
+              >By clicking Continue you agree to iBuy's
+              <u>User Agreement</u> and <u>Privacy Policy</u></span
+            ></label
+          >
+
+          <p class="similar-title">Similar to what you ordered</p>
+          <div class="similar-imgs">
+            <img
+              src="https://placehold.co/150x150/b8672e/ffffff?text=Chair"
+              alt="Similar 1"
+            />
+            <img
+              src="https://placehold.co/150x150/8b6f47/ffffff?text=Table"
+              alt="Similar 2"
+            />
+            <img
+              src="https://placehold.co/150x150/d9a066/ffffff?text=Pouf"
+              alt="Similar 3"
+            />
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="py-3 mt-5">
+      <div class="container text-center text-muted">
+        &copy; 2026 iBUY Philippines
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
