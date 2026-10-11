@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>iBuy | Order History</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap"
+        rel="stylesheet">
+    <link href="profilestyle.css" rel="stylesheet">
+    <link href="order_history.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <a class="skip" href="#main">Skip to content</a>
+
+    <div class="topbar">
+        <span><i class="bi bi-globe2"></i> PH | English</span>
+        <span><i class="bi bi-geo-alt"></i> Pasay City</span>
+    </div>
+
+    <header>
+        <input type="checkbox" id="menu" class="menu-toggle" hidden>
+        <label for="menu" class="menu-btn" aria-label="Toggle menu"><i class="bi bi-list"></i></label>
+        <a href="profile.html" class="logo">iBUY</a>
+        <nav aria-label="Main">
+            <a href="#">Products</a>
+            <a href="#">Rooms</a>
+            <a href="#">Offers</a>
+            <a href="#">Planning</a>
+            <a href="#">Services</a>
+        </nav>
+        <form class="search" role="search" onsubmit="return false">
+            <i class="bi bi-search"></i>
+            <input type="search" placeholder="What are you looking for?" aria-label="Search">
+            <i class="bi bi-camera"></i>
+        </form>
+        <div class="actions">
+            <a href="profile.html"><i class="bi bi-person"></i><span class="label">Bruce</span></a>
+            <a href="profile.html" aria-label="Orders"><i class="bi bi-truck"></i></a>
+            <a href="wishlist.html" aria-label="Wishlist"><i class="bi bi-heart"></i></a>
+            <a href="#" aria-label="Cart"><i class="bi bi-bag"></i></a>
+        </div>
+    </header>
+
+    <main class="wrap" id="main">
+        <div class="row g-3 g-lg-4">
+            <aside class="col-lg-3">
+                <nav class="side-nav d-flex flex-row flex-lg-column gap-2" aria-label="Account">
+                    <a href="profile.html" class="side-link"><i class="bi bi-truck"></i>My Orders</a>
+                    <a href="orderhistory.html" class="side-link active"><i class="bi bi-clock-history"></i>Order
+                        History</a>
+                    <a href="#" class="side-link"><i class="bi bi-geo-alt-fill"></i>Addresses</a>
+                    <a href="#" class="side-link"><i class="bi bi-lock-fill"></i>Account Security</a>
+                    <a href="#" class="side-link"><i class="bi bi-credit-card-fill"></i>Payments</a>
+                    <a href="wishlist.html" class="side-link"><i class="bi bi-list-ul"></i>Wishlist</a>
+                    <hr class="d-none d-lg-block my-1">
+                    <a href="#" class="side-link"><i class="bi bi-headset"></i>Customer Support</a>
+                    <a href="#" class="side-link"><i class="bi bi-box-arrow-left"></i>Log out</a>
+                </nav>
+            </aside>
+            <section class="col-lg-9">
+                <div class="page-head">
+                    <h1>Order History</h1>
+                    <p>Every order you have placed with iBUY.</p>
+                </div>
+
+                <div class="filters">
+                    <div class="order-search">
+                        <i class="bi bi-search"></i>
+                        <input type="search" placeholder="Search by Order ID or Product Name"
+                            aria-label="Search orders">
+                    </div>
+                    <select class="filter-select" aria-label="Filter by status">
+                        <option>All statuses</option>
+                        <option>On the way</option>
+                        <option>Delivered</option>
+                        <option>Waiting for payment</option>
+                        <option>Cancelled</option>
+                    </select>
+                    <select class="filter-select" aria-label="Filter by year">
+                        <option>2025</option>
+                        <option>2024</option>
+                    </select>
+                </div>
+
+                <div class="accordion" id="orderAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#o-73262" aria-expanded="false" aria-controls="o-73262">
+                                <span class="sum">
+                                    <span class="sum-id">#73262</span>
+                                    <span class="sum-date">Nov 10, 2025</span>
+                                    <span class="sum-items">4 items</span>
+                                    <span class="sum-total">PHP 12,938.18</span>
+                                    <span class="pill on-the-way">On the way</span>
+                                </span>
+                            </button>
+                        </h2>
+                        <div id="o-73262" class="accordion-collapse collapse" data-bs-parent="#orderAccordion">
+                            <div class="accordion-body">
+                                <dl class="order-info">
+                                    <dt>Date of delivery:</dt>
+                                    <dd>Fri, 13 Nov, 2025</dd>
+                                    <dt>Delivered to:</dt>
+                                    <dd>Great street, New York Brooklyn 5A, PO: 212891</dd>
+                                    <dt class="fw-bold text-dark">Total:</dt>
+                                    <dd class="fw-bold">PHP 12,938.18</dd>
+                                </dl>
+                                <ul class="detail-items">
+                                    <li><span>Bella Swivel Chair</span><span>1x &middot; PHP 5,098.15</span></li>
+                                    <li><span>Solid Wood Dining Table</span><span>1x &middot; PHP 2,990.03</span></li>
+                                    <li><span>Luna Lounge Chair</span><span>2x &middot; PHP 4,850.00</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#o-73198" aria-expanded="false" aria-controls="o-73198">
+                                <span class="sum">
+                                    <span class="sum-id">#73198</span>
+                                    <span class="sum-date">Nov 6, 2025</span>
+                                    <span class="sum-items">2 items</span>
+                                    <span class="sum-total">PHP 12,490.00</span>
+                                    <span class="pill delivered">Delivered</span>
+                                </span>
+                            </button>
+                        </h2>
+                        <div id="o-73198" class="accordion-collapse collapse" data-bs-parent="#orderAccordion">
+                            <div class="accordion-body">
+                                <dl class="order-info">
+                                    <dt>Date of delivery:</dt>
+                                    <dd>Tue, 11 Nov, 2025</dd>
+                                    <dt>Delivered to:</dt>
+                                    <dd>Maple avenue, New York Queens 12C, PO: 114320</dd>
+                                    <dt class="fw-bold text-dark">Total:</dt>
+                                    <dd class="fw-bold">PHP 12,490.00</dd>
+                                </dl>
+                                <ul class="detail-items">
+                                    <li><span>Harper Sofa</span><span>1x &middot; PHP 12,490.00</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#o-72954" aria-expanded="false" aria-controls="o-72954">
+                                <span class="sum">
+                                    <span class="sum-id">#72954</span>
+                                    <span class="sum-date">Nov 2, 2025</span>
+                                    <span class="sum-items">1 items</span>
+                                    <span class="sum-total">PHP 6,590.00</span>
+                                    <span class="pill to-pay">Waiting for payment</span>
+                                </span>
+                            </button>
+                        </h2>
+                        <div id="o-72954" class="accordion-collapse collapse" data-bs-parent="#orderAccordion">
+                            <div class="accordion-body">
+                                <dl class="order-info">
+                                    <dt>Date of delivery:</dt>
+                                    <dd>To be confirmed</dd>
+                                    <dt>Delivered to:</dt>
+                                    <dd>Great street, New York Brooklyn 5A, PO: 212891</dd>
+                                    <dt class="fw-bold text-dark">Total:</dt>
+                                    <dd class="fw-bold">PHP 6,590.00</dd>
+                                </dl>
+                                <ul class="detail-items">
+                                    <li><span>Haven Bookshelf</span><span>1x &middot; PHP 6,590.00</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#o-72811" aria-expanded="false" aria-controls="o-72811">
+                                <span class="sum">
+                                    <span class="sum-id">#72811</span>
+                                    <span class="sum-date">Oct 28, 2025</span>
+                                    <span class="sum-items">3 items</span>
+                                    <span class="sum-total">PHP 17,740.00</span>
+                                    <span class="pill cancelled">Cancelled</span>
+                                </span>
+                            </button>
+                        </h2>
+                        <div id="o-72811" class="accordion-collapse collapse" data-bs-parent="#orderAccordion">
+                            <div class="accordion-body">
+                                <dl class="order-info">
+                                    <dt>Date of delivery:</dt>
+                                    <dd>&mdash;</dd>
+                                    <dt>Delivered to:</dt>
+                                    <dd>Great street, New York Brooklyn 5A, PO: 212891</dd>
+                                    <dt class="fw-bold text-dark">Total:</dt>
+                                    <dd class="fw-bold">PHP 17,740.00</dd>
+                                </dl>
+                                <ul class="detail-items">
+                                    <li><span>Verona Cabinet</span><span>1x &middot; PHP 8,750.00</span></li>
+                                    <li><span>Oslo Side Table</span><span>2x &middot; PHP 4,700.00</span></li>
+                                    <li><span>Aria Accent Chair</span><span>1x &middot; PHP 4,290.00</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#o-72640" aria-expanded="false" aria-controls="o-72640">
+                                <span class="sum">
+                                    <span class="sum-id">#72640</span>
+                                    <span class="sum-date">Oct 19, 2025</span>
+                                    <span class="sum-items">5 items</span>
+                                    <span class="sum-total">PHP 412.75</span>
+                                    <span class="pill delivered">Delivered</span>
+                                </span>
+                            </button>
+                        </h2>
+                        <div id="o-72640" class="accordion-collapse collapse" data-bs-parent="#orderAccordion">
+                            <div class="accordion-body">
+                                <dl class="order-info">
+                                    <dt>Date of delivery:</dt>
+                                    <dd>Sat, 25 Oct, 2025</dd>
+                                    <dt>Delivered to:</dt>
+                                    <dd>Great street, New York Brooklyn 5A, PO: 212891</dd>
+                                    <dt class="fw-bold text-dark">Total:</dt>
+                                    <dd class="fw-bold">PHP 412.75</dd>
+                                </dl>
+                                <ul class="detail-items">
+                                    <li><span>Oak side table</span><span>1x &middot; PHP 180.00</span></li>
+                                    <li><span>Linen cushion cover</span><span>2x &middot; PHP 35.00</span></li>
+                                    <li><span>Wall shelf</span><span>1x &middot; PHP 95.75</span></li>
+                                    <li><span>Throw blanket</span><span>1x &middot; PHP 40.00</span></li>
+                                    <li><span>Candle holder set</span><span>1x &middot; PHP 62.00</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#o-72377" aria-expanded="false" aria-controls="o-72377">
+                                <span class="sum">
+                                    <span class="sum-id">#72377</span>
+                                    <span class="sum-date">Oct 3, 2025</span>
+                                    <span class="sum-items">2 items</span>
+                                    <span class="sum-total">PHP 74.00</span>
+                                    <span class="pill delivered">Delivered</span>
+                                </span>
+                            </button>
+                        </h2>
+                        <div id="o-72377" class="accordion-collapse collapse" data-bs-parent="#orderAccordion">
+                            <div class="accordion-body">
+                                <dl class="order-info">
+                                    <dt>Date of delivery:</dt>
+                                    <dd>Mon, 6 Oct, 2025</dd>
+                                    <dt>Delivered to:</dt>
+                                    <dd>Maple avenue, New York Queens 12C, PO: 114320</dd>
+                                    <dt class="fw-bold text-dark">Total:</dt>
+                                    <dd class="fw-bold">PHP 74.00</dd>
+                                </dl>
+                                <ul class="detail-items">
+                                    <li><span>Bamboo organizer</span><span>1x &middot; PHP 44.00</span></li>
+                                    <li><span>Wall clock</span><span>1x &middot; PHP 30.00</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <nav class="pager" aria-label="Pages">
+                    <a href="#" aria-label="Previous"><i class="bi bi-chevron-left"></i></a>
+                    <a href="#" class="active" aria-current="page">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#" aria-label="Next"><i class="bi bi-chevron-right"></i></a>
+                </nav>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <span>&copy; iBUY Philippines</span>
+        <nav aria-label="Footer">
+            <a href="#">Help</a>
+            <a href="#">Delivery</a>
+            <a href="#">Returns</a>
+            <a href="#">Contact us</a>
+        </nav>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
