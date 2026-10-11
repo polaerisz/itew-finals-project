@@ -451,17 +451,6 @@ footer nav {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  *,
-  *::before {
-    transition: none !important;
-    animation: none !important;
-  }
-}
-
 /* Photos fill their boxes without stretching */
 .avatar img,
 .thumb img {
@@ -496,7 +485,7 @@ footer nav {
   color: #dc3545;
 }
 
-/* Edit Profile panel */
+/* Edit Profile panel (opened with :target, no JavaScript) */
 .modal-back {
   display: none;
   position: fixed;
