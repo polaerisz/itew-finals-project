@@ -13,7 +13,6 @@
       rel="stylesheet"
     />
     <link href="style.css" rel="stylesheet" />
-    <link href="cart.css" rel="stylesheet" />
   </head>
   <body>
     <header class="topbar">
@@ -68,7 +67,7 @@
           <h2 class="review-title"><b>Checkout:</b> Review Order</h2>
 
           <div class="ship-box">
-            <p class="bold small-text">Delivery Information</p>
+            <p class="fw-bold small-text">Delivery Information</p>
             <p class="small-text">
               John Doe<br />Address 12334<br />12345678910<br />itsjherwelmarie@gmail.com
             </p>
@@ -80,31 +79,31 @@
             <p class="small-text"><b>Delivery estimate:</b> January 20, 2026</p>
           </div>
 
-          <div class="order-row">
+          <div class="order-row d-flex align-items-center">
             <img
               class="order-thumb"
               src="Bella Swivel Chair.jpg"
               alt="Bella Swivel Chair"
             />
-            <div class="order-info">
-              <p class="order-name">
+            <div class="order-info flex-grow-1">
+              <p class="order-name fw-bold mb-0">
                 Bella Swivel Chair <span class="muted small-text">Qty: 1</span>
               </p>
               <p class="small-text">Chair, Green</p>
               <p class="small-text">₱ 3,000 Set</p>
               <p class="small-text muted">Click &amp; Collect</p>
             </div>
-            <p class="order-price">PHP. 3,000.00</p>
+            <p class="order-price fw-bold mb-0">PHP. 3,000.00</p>
           </div>
 
-          <div class="order-row">
+          <div class="order-row d-flex align-items-center">
             <img
               class="order-thumb"
               src="Solid Wood Dining Table.jpg"
               alt="Solid Wood Dining Table"
             />
-            <div class="order-info">
-              <p class="order-name">
+            <div class="order-info flex-grow-1">
+              <p class="order-name fw-bold mb-0">
                 Solid Wood Dining Table
                 <span class="muted small-text">Qty: 2</span>
               </p>
@@ -112,13 +111,13 @@
               <p class="small-text">₱ 1,045.15 each</p>
               <p class="small-text muted">Click &amp; Collect</p>
             </div>
-            <p class="order-price">PHP. 2,090.30</p>
+            <p class="order-price fw-bold mb-0">PHP. 2,090.30</p>
           </div>
 
           <form action="place-order.html" method="get">
             <div class="pay-box">
               <h2 class="review-title"><b>Payment Method</b></h2>
-              <p class="small-text bold">PayPal</p>
+              <p class="small-text fw-bold">PayPal</p>
               <p class="small-text muted">
                 You will be redirected to PayPal to complete your purchase.
               </p>
@@ -127,15 +126,15 @@
             <div class="place-box">
               <h2 class="review-title"><b>Place Order</b></h2>
               <p class="small-text">3 items &bull; Shipping fee: Free</p>
-              <p class="bold">Total: PHP 5,091.16</p>
-              <label class="agree-row"
-                ><input type="checkbox" name="terms" required />
+              <p class="fw-bold">Total: PHP 5,091.16</p>
+              <label class="agree-row d-flex"
+                ><input class="form-check-input flex-shrink-0 mt-0" type="checkbox" name="terms" required />
                 <span
                   >I agree to the <u>User Agreement</u> and
                   <u>Privacy Policy</u></span
                 ></label
               >
-              <button class="btn-ibuy checkout-btn" type="submit">
+              <button class="btn-ibuy checkout-btn d-block w-100 text-center" type="submit">
                 Place order
               </button>
             </div>
@@ -146,54 +145,45 @@
         <div class="col-lg-4 order-1 order-lg-2">
           <p class="small-text text-end">
             How do you like our new checkout?
-            <a class="bold" href="#">Tell us what you think</a>
+            <a class="fw-bold" href="#">Tell us what you think</a>
           </p>
           <div class="total-box">
-            <p class="total-text">Order Summary</p>
-            <div class="sum-line small-text">
+            <p class="total-text fw-bold">Order Summary</p>
+            <div class="sum-line d-flex justify-content-between mb-1 small-text">
               <span>Subtotal (3 items)</span><span>PHP 5,090.30</span>
             </div>
-            <div class="sum-line small-text">
+            <div class="sum-line d-flex justify-content-between mb-1 small-text">
               <span>Shipping fee (Click &amp; Collect)</span><span>Free</span>
             </div>
-            <div class="sum-line line small-text">
+            <div class="sum-line line d-flex justify-content-between mb-1 small-text">
               <span>Estimated tax</span><span>PHP 0.86</span>
             </div>
-            <p class="total-text mt-2">Total: PHP 5,091.16</p>
+            <p class="total-text fw-bold mt-2">Total: PHP 5,091.16</p>
             <p class="small-text">Covered by iBuy Money Back Guarantee</p>
             <label class="small-text d-block my-2"
-              ><input type="checkbox" /> Receive exclusive offers and promotions
+              ><input class="form-check-input" type="checkbox" /> Receive exclusive offers and promotions
               from iBuy</label
             >
             <p class="small-text">
               Continue to PayPal to complete your purchase
             </p>
-            <a href="place-order.html" class="btn-ibuy-blue continue-btn rounded-5"
+            <a href="place-order.html" class="btn-ibuy-blue continue-btn rounded-5 d-inline-block text-decoration-none"
               >Continue</a
             >
           </div>
-          <label class="agree-row"
-            ><input type="checkbox" required/>
+          <label class="agree-row d-flex"
+            ><input class="form-check-input flex-shrink-0 mt-0" type="checkbox" required />
             <span
               >By clicking Continue you agree to iBuy's
               <u>User Agreement</u> and <u>Privacy Policy</u></span
             ></label
           >
 
-          <p class="similar-title">Similar to what you ordered</p>
-          <div class="similar-imgs">
-            <img
-              src="Chair.jpg"
-              alt="Similar 1"
-            />
-            <img
-              src="Table.jpg"
-              alt="Similar 2"
-            />
-            <img
-              src="Pouf.jpg"
-              alt="Similar 3"
-            />
+          <p class="similar-title fw-bold">Similar to what you ordered</p>
+          <div class="similar-imgs d-flex gap-2">
+            <img src="Chair.jpg" alt="Similar 1" />
+            <img src="Table.jpg" alt="Similar 2" />
+            <img src="Pouf.jpg" alt="Similar 3" />
           </div>
         </div>
       </div>
