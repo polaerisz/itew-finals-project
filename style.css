@@ -921,13 +921,14 @@ body.account-page > header {
 }
 
 /* Sidebar */
-.side-link {
+.account-page .side-nav .side-link {
   display: flex;
   align-items: center;
   gap: 0.6rem;
   padding: 12px 14px;
   background: var(--ibuy-tint);
   border-radius: 8px;
+  border-bottom: 0;
   font-size: 13px;
   font-weight: 600;
   white-space: nowrap;
@@ -935,14 +936,15 @@ body.account-page > header {
     background 0.2s,
     color 0.2s;
 }
-.side-link:hover {
+.account-page .side-nav .side-link:hover {
   background: #e7e7e7;
   color: var(--ibuy-blue);
 }
-.side-link.active {
+.account-page .side-nav .side-link.active {
   background: #e7e7e7;
   box-shadow: inset 3px 0 0 var(--ibuy-yellow);
 }
+
 .side-link i {
   font-size: 16px;
 }
