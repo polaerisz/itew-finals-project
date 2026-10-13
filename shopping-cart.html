@@ -13,7 +13,6 @@
       rel="stylesheet"
     />
     <link href="style.css" rel="stylesheet" />
-    <link href="cart.css" rel="stylesheet" />
   </head>
   <body>
     <header class="topbar">
@@ -79,13 +78,13 @@
               <h2 class="item-name">Bella Swivel Chair</h2>
               <p class="muted small-text">Chair, Green</p>
               <p class="small-text">₱ 3,000 Set</p>
-              <p class="small-text bold">Unit price: ₱1,500 each</p>
+              <p class="small-text fw-bold">Unit price: ₱1,500 each</p>
               <p class="small-text muted">Previous price: ₱ 4,000 each</p>
               <p class="small-text muted">Minimum order quantity: 1</p>
             </div>
             <p class="item-price">₱3,000.00</p>
             <div class="item-actions">
-              <div class="qty-box">
+              <div class="qty-box rounded-pill overflow-hidden">
                 <input
                   class="qty-input"
                   type="number"
@@ -110,13 +109,13 @@
               <h2 class="item-name">Solid Wood Dining Table</h2>
               <p class="muted small-text">Dining Table, White</p>
               <p class="small-text">15 cm</p>
-              <p class="small-text bold">Unit price: ₱1045.15 /pieces</p>
+              <p class="small-text fw-bold">Unit price: ₱1045.15 /pieces</p>
               <p class="small-text muted">Previous price: ₱1045.15 / pieces</p>
               <p class="small-text muted">Minimum order quantity: 1</p>
             </div>
             <p class="item-price">₱2,090.30</p>
             <div class="item-actions">
-              <div class="qty-box">
+              <div class="qty-box rounded-pill overflow-hidden">
                 <input
                   class="qty-input"
                   type="number"
@@ -131,35 +130,35 @@
             </div>
           </div>
 
-          <div class="delivery-box">
+          <div class="delivery-box rounded-3">
             <i class="bi bi-truck fs-3"></i>
             <div class="bar">
-              <span class="small-text bold"
+              <span class="small-text fw-bold"
                 >Add ₱ 794 more to qualify for free delivery</span
               >
               <div class="progress-track">
                 <div class="progress-fill"></div>
               </div>
             </div>
-            <span class="small-text bold">₱ 794</span>
+            <span class="small-text fw-bold">₱ 794</span>
           </div>
         </div>
 
         <!-- Order summary -->
         <div class="col-lg-4">
           <div class="summary-box">
-            <p class="bold">Order Summary</p>
-            <div class="summary-row">
+            <p class="fw-bold">Order Summary</p>
+            <div class="summary-row d-flex justify-content-between fw-bold">
               <span>Product subtotal</span><span>₱5,090.30</span>
             </div>
-            <div class="summary-row">
+            <div class="summary-row d-flex justify-content-between fw-bold">
               <span>Shipping fee</span><span>from ₱50</span>
             </div>
-            <div class="summary-row line">
+            <div class="summary-row line d-flex justify-content-between fw-bold">
               <span class="fst-italic">Or pick up your order</span
-              ><span class="green">Free</span>
+              ><span class="green fst-italic">Free</span>
             </div>
-            <div class="summary-total">
+            <div class="summary-total d-flex justify-content-between align-items-center fw-bold">
               <span>Order total (excl. assembly fees)</span>
               <span class="amount">₱ 5,090.30</span>
             </div>
@@ -169,12 +168,12 @@
             By clicking "check out" you're agreeing to our
             <a href="#">Privacy Policy</a>
           </p>
-          <a href="checkout.html" class="btn-ibuy checkout-btn"
+          <a href="checkout.html" class="btn-ibuy checkout-btn d-block w-100 text-center text-decoration-none"
             >Go to checkout</a
           >
 
-          <p class="small-text bold mt-3 mb-0">Payment methods</p>
-          <div class="pay-icons">
+          <p class="small-text fw-bold mt-3 mb-0">Payment methods</p>
+          <div class="pay-icons d-flex flex-wrap">
             <span class="pay-icon">VISA</span>
             <span class="pay-icon">Mastercard</span>
             <span class="pay-icon">AMEX</span>
