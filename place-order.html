@@ -13,7 +13,6 @@
       rel="stylesheet"
     />
     <link href="style.css" rel="stylesheet" />
-    <link href="cart.css" rel="stylesheet" />
   </head>
   <body>
     <header class="topbar">
@@ -68,26 +67,26 @@
 
       <div class="row">
         <div class="col-lg-8">
-          <div class="confirm-box">
+          <div class="confirm-box rounded-3">
             <p>
               Thank you for your order!<br />Your order number is
               <a class="order-link" href="#">432972926</a>
             </p>
-            <div class="confirm-row">
+            <div class="confirm-row d-flex">
               <i class="bi bi-envelope"></i>
               <div>
                 <b>An order confirmation has been sent to</b
                 ><br />itsjherwelmarie@gmail.com
               </div>
             </div>
-            <div class="confirm-row">
+            <div class="confirm-row d-flex">
               <i class="bi bi-geo-alt"></i>
               <div>
                 <b>Click &amp; Collect order pick up at</b><br />iBUY Emeryville
                 4400 Shellmound Street, Pasay City
               </div>
             </div>
-            <div class="confirm-row">
+            <div class="confirm-row d-flex">
               <i class="bi bi-calendar-event"></i>
               <div>
                 <b>Delivery estimate (pick up date and time)</b><br />January
@@ -100,12 +99,12 @@
           </div>
 
           <div class="survey-box">
-            <p class="bold mb-1">Help us get better!</p>
+            <p class="fw-bold mb-1">Help us get better!</p>
             <p class="small-text">
               Based on your experience on a scale of 1-10, how are you likely to
               recommend iBUY.com to your friends and family?
             </p>
-            <div class="rate-list">
+            <div class="rate-list d-flex flex-wrap gap-2">
               <button class="rate-btn" type="button">1</button>
               <button class="rate-btn" type="button">2</button>
               <button class="rate-btn" type="button">3</button>
@@ -121,11 +120,11 @@
 
           <div class="row">
             <div class="col-md-6">
-              <div class="help-row">
+              <div class="help-row d-flex">
                 <i class="bi bi-telephone"></i>
                 <div>
                   <b>Need assistance?</b><br />Don't worry, we can help!<br /><a
-                    class="order-link bold"
+                    class="order-link fw-bold"
                     href="#"
                     >095792849145</a
                   >
@@ -133,7 +132,7 @@
               </div>
             </div>
             <div class="col-md-6">
-              <div class="help-row">
+              <div class="help-row d-flex">
                 <i class="bi bi-person"></i>
                 <div>
                   <b>Customer service hours</b><br />Monday - Friday<br />9:00
@@ -146,31 +145,25 @@
 
         <!-- Your order -->
         <div class="col-lg-4">
-          <p class="side-title">Your Order</p>
-          <div class="thumb-row">
-            <img
-              src="Bella Swivel Chair.jpg"
-              alt="Chair"
-            />
-            <img
-              src="Solid Wood Dining Table.jpg"
-              alt="Table"
-            />
+          <p class="side-title fw-bold">Your Order</p>
+          <div class="thumb-row d-flex gap-2">
+            <img src="Bella Swivel Chair.jpg" alt="Chair" />
+            <img src="Solid Wood Dining Table.jpg" alt="Table" />
           </div>
 
-          <p class="side-title">Order Summary</p>
-          <div class="sum-line">
+          <p class="side-title fw-bold">Order Summary</p>
+          <div class="sum-line d-flex justify-content-between mb-1">
             <span>Subtotal</span><span>₱5,090.03</span>
           </div>
-          <div class="sum-line">
+          <div class="sum-line d-flex justify-content-between mb-1">
             <span>Shipping fee (collection)</span><span>₱100.00</span>
           </div>
-          <div class="sum-line line">
+          <div class="sum-line line d-flex justify-content-between mb-1">
             <span>Estimated Sales Tax</span><span>₱0.86</span>
           </div>
-          <div class="sum-total">
+          <div class="sum-total d-flex justify-content-between align-items-center">
             <span>Estimated total (incl. tax)</span
-            ><span class="amount">₱ 5,090.89</span>
+            ><span class="amount fw-bold">₱ 5,090.89</span>
           </div>
           <p class="small-text mt-2"><b>Payment method:</b> PayPal</p>
           <p class="small-text">
@@ -185,7 +178,7 @@
 
       <div class="row">
         <div class="col-md-4">
-          <div class="feature-box">
+          <div class="feature-box d-flex">
             <i class="bi bi-shield-check"></i>
             <div>
               <b>365 Days to change your mind</b><br />If you change your mind,
@@ -194,7 +187,7 @@
           </div>
         </div>
         <div class="col-md-4">
-          <div class="feature-box">
+          <div class="feature-box d-flex">
             <i class="bi bi-lock"></i>
             <div>
               <b>Secure Payments</b><br />Your payments are safe and secure with
@@ -203,7 +196,7 @@
           </div>
         </div>
         <div class="col-md-4">
-          <div class="feature-box">
+          <div class="feature-box d-flex">
             <i class="bi bi-bag-check"></i>
             <div>
               <b>Click and Collect</b><br />Shop online and pick-up your order
