@@ -123,3 +123,419 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+
+//  REGISTRATION FORM VALIDATION 
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    // Get the registration form.
+    const registerForm = document.getElementById("registerForm");
+
+    // Get the input fields.
+    const firstInput = document.getElementById("first");
+    const lastInput = document.getElementById("last");
+    const emailInput = document.getElementById("email");
+    const phoneInput = document.getElementById("phone");
+    const passwordInput = document.getElementById("password");
+    const confirmInput = document.getElementById("confirm");
+    const termsInput = document.getElementById("terms");
+
+    // Get the general error message.
+    const formError = document.getElementById("formError");
+
+
+    // ==================== HELPER FUNCTION ====================
+
+    // Display an error or mark a field as valid.
+    function setFieldState(input, errorId, isValid, message) {
+
+        const errorElement = document.getElementById(errorId);
+
+        if (!isValid) {
+
+            input.classList.add("is-invalid");
+            input.classList.remove("is-valid");
+
+            errorElement.textContent = message;
+
+        } else {
+
+            input.classList.remove("is-invalid");
+            input.classList.add("is-valid");
+
+        }
+
+        return isValid;
+    }
+
+
+    // ==================== FIRST NAME VALIDATION ====================
+
+    function validateFirstName() {
+
+        const firstName = firstInput.value.trim();
+
+        if (firstName === "") {
+
+            return setFieldState(
+                firstInput,
+                "firstError",
+                false,
+                "First name is required."
+            );
+
+        }
+
+        return setFieldState(
+            firstInput,
+            "firstError",
+            true,
+            ""
+        );
+    }
+
+
+    // ==================== LAST NAME VALIDATION ====================
+
+    function validateLastName() {
+
+        const lastName = lastInput.value.trim();
+
+        if (lastName === "") {
+
+            return setFieldState(
+                lastInput,
+                "lastError",
+                false,
+                "Last name is required."
+            );
+
+        }
+
+        return setFieldState(
+            lastInput,
+            "lastError",
+            true,
+            ""
+        );
+    }
+
+
+    // ==================== EMAIL VALIDATION ====================
+
+    function validateEmail() {
+
+        const email = emailInput.value.trim();
+
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (email === "") {
+
+            return setFieldState(
+                emailInput,
+                "emailError",
+                false,
+                "Email address is required."
+            );
+
+        }
+
+        if (!emailPattern.test(email)) {
+
+            return setFieldState(
+                emailInput,
+                "emailError",
+                false,
+                "Please enter a valid email address."
+            );
+
+        }
+
+        return setFieldState(
+            emailInput,
+            "emailError",
+            true,
+            ""
+        );
+    }
+
+
+    // ==================== PHONE NUMBER VALIDATION ====================
+
+    function validatePhone() {
+
+        const phone = phoneInput.value.trim();
+
+        // Accept 09XXXXXXXXX or +639XXXXXXXXX.
+        const phonePattern = /^(09\d{9}|\+639\d{9})$/;
+
+        if (phone === "") {
+
+            return setFieldState(
+                phoneInput,
+                "phoneError",
+                false,
+                "Mobile number is required."
+            );
+
+        }
+
+        if (!phonePattern.test(phone)) {
+
+            return setFieldState(
+                phoneInput,
+                "phoneError",
+                false,
+                "Use a valid PH mobile number, like 09171234567 or +639171234567."
+            );
+
+        }
+
+        return setFieldState(
+            phoneInput,
+            "phoneError",
+            true,
+            ""
+        );
+    }
+
+
+    // ==================== PASSWORD VALIDATION ====================
+
+    function validatePassword() {
+
+        const password = passwordInput.value;
+
+        if (password.trim() === "") {
+
+            return setFieldState(
+                passwordInput,
+                "passwordError",
+                false,
+                "Password is required."
+            );
+
+        }
+
+        if (password.length < 8) {
+
+            return setFieldState(
+                passwordInput,
+                "passwordError",
+                false,
+                "Password must be at least 8 characters."
+            );
+
+        }
+
+        return setFieldState(
+            passwordInput,
+            "passwordError",
+            true,
+            ""
+        );
+    }
+
+
+    // ==================== CONFIRM PASSWORD VALIDATION ====================
+
+    function validateConfirmPassword() {
+
+        const password = passwordInput.value;
+        const confirmPassword = confirmInput.value;
+
+        if (confirmPassword === "") {
+
+            return setFieldState(
+                confirmInput,
+                "confirmError",
+                false,
+                "Please confirm your password."
+            );
+
+        }
+
+        if (password !== confirmPassword) {
+
+            return setFieldState(
+                confirmInput,
+                "confirmError",
+                false,
+                "Passwords do not match."
+            );
+
+        }
+
+        return setFieldState(
+            confirmInput,
+            "confirmError",
+            true,
+            ""
+        );
+    }
+
+
+    // ==================== TERMS VALIDATION ====================
+
+    function validateTerms() {
+
+        const isChecked = termsInput.checked;
+
+        if (!isChecked) {
+
+            termsInput.classList.add("is-invalid");
+            termsInput.classList.remove("is-valid");
+
+            return false;
+        }
+
+        termsInput.classList.remove("is-invalid");
+        termsInput.classList.add("is-valid");
+
+        return true;
+    }
+
+
+    // ==================== REAL-TIME VALIDATION ====================
+
+    // Validate names while the user types.
+    firstInput.addEventListener("input", function () {
+
+        validateFirstName();
+        hideGeneralError();
+
+    });
+
+    lastInput.addEventListener("input", function () {
+
+        validateLastName();
+        hideGeneralError();
+
+    });
+
+
+    // Validate email while the user types.
+    emailInput.addEventListener("input", function () {
+
+        validateEmail();
+        hideGeneralError();
+
+    });
+
+
+    // Validate phone number while the user types.
+    phoneInput.addEventListener("input", function () {
+
+        validatePhone();
+        hideGeneralError();
+
+    });
+
+
+    // Validate password while the user types.
+    passwordInput.addEventListener("input", function () {
+
+        validatePassword();
+
+        // Recheck confirmation when the original password changes.
+        if (confirmInput.value !== "") {
+            validateConfirmPassword();
+        }
+
+        hideGeneralError();
+
+    });
+
+
+    // Validate confirmation while the user types.
+    confirmInput.addEventListener("input", function () {
+
+        validateConfirmPassword();
+        hideGeneralError();
+
+    });
+
+
+    // Validate terms when the checkbox changes.
+    termsInput.addEventListener("change", function () {
+
+        validateTerms();
+        hideGeneralError();
+
+    });
+
+
+    // ==================== GENERAL ERROR MESSAGE ====================
+
+    function hideGeneralError() {
+
+        formError.classList.add("d-none");
+
+    }
+
+
+    // ==================== FORM SUBMISSION ====================
+
+    registerForm.addEventListener("submit", function (event) {
+
+        // Prevent the default form submission.
+        event.preventDefault();
+
+        // Validate every field.
+        const isFirstNameValid = validateFirstName();
+        const isLastNameValid = validateLastName();
+        const isEmailValid = validateEmail();
+        const isPhoneValid = validatePhone();
+        const isPasswordValid = validatePassword();
+        const isConfirmValid = validateConfirmPassword();
+        const areTermsAccepted = validateTerms();
+
+
+        // Check whether every field is valid.
+        const isFormValid =
+            isFirstNameValid &&
+            isLastNameValid &&
+            isEmailValid &&
+            isPhoneValid &&
+            isPasswordValid &&
+            isConfirmValid &&
+            areTermsAccepted;
+
+
+        if (isFormValid) {
+
+            // Hide the general error message.
+            formError.classList.add("d-none");
+
+            // Redirect to the login page.
+            window.location.href = "login.html";
+
+        } else {
+
+            // Display a general error message.
+            formError.textContent =
+                "Please complete all fields correctly before continuing.";
+
+            formError.classList.remove("d-none");
+
+            // Scroll to the first invalid field.
+            const firstInvalidField =
+                registerForm.querySelector(".is-invalid");
+
+            if (firstInvalidField) {
+
+                firstInvalidField.focus();
+
+                firstInvalidField.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+
+            }
+
+        }
+
+    });
+
+});
